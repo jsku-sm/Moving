@@ -15,6 +15,7 @@
   function makeShape(text){const poly=M.parseEquation(text);M.validateShape(poly);return {poly,reps:M.representatives(poly),input:text};}
   const initialPoint=makePoint(-2,3),initialShape=makeShape('(x-1)^2+(y-2)^2=4');
   const state={mode:'point-translation',learning:'guided',families:{point:{initial:initialPoint,current:initialPoint,history:[],last:null},shape:{initial:initialShape,current:initialShape,history:[],last:null}},settings:{original:true,trail:true,reps:false,chess:true,reduced:window.matchMedia('(prefers-reduced-motion: reduce)').matches,...(stored.settings||{})},badges:stored.badges&&typeof stored.badges==='object'?stored.badges:{},anim:null,completed:null,sourceDirty:false,placing:false,challenge:null,exampleIndex:0,updating:false,toastTimer:null};
+  state.settings.sound=stored.settings?.sound!==false;
   let raf=0;
   const mode=()=>MODES[state.mode],family=()=>state.families[mode().shape?'shape':'point'];
   const coord=p=>`(${p.map(M.fmt).join(', ')})`;
@@ -26,6 +27,13 @@
   function showError(id,error){$(id).textContent=error instanceof Error?error.message:String(error);$(id).hidden=false;}
   function clearErrors(){for(const id of ['source-error','transform-error']){$(id).textContent='';$(id).hidden=true;}}
   function stopAnimation(){cancelAnimationFrame(raf);raf=0;if(state.anim)state.anim.playing=false;}
+  const movingPhases=new Set(['direct','xmove','ymove','mirror']);
+  let audioContext=null;
+  function audioReady(){if(!state.settings.sound)return false;const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return false;try{audioContext||=new Audio();if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});return true;}catch{return false;}}
+  function toneAt(frequency,start,duration,volume){const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();oscillator.type='sine';oscillator.frequency.setValueAtTime(frequency,start);oscillator.frequency.exponentialRampToValueAtTime(frequency*1.18,start+Math.min(.07,duration/2));gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(volume,start+.012);gain.gain.exponentialRampToValueAtTime(.0001,start+duration);oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start(start);oscillator.stop(start+duration);}
+  function playMoveSound(){if(!audioReady())return;const now=audioContext.currentTime;toneAt(560,now,.11,.035);toneAt(760,now+.045,.13,.027);}
+  function playArrivalSound(){if(!audioReady())return;const now=audioContext.currentTime;toneAt(660,now,.18,.035);toneAt(880,now+.09,.24,.04);toneAt(1046,now+.19,.32,.03);}
+  function updateMotionSound(a,step){if(!state.settings.sound||!movingPhases.has(step.phase)){a.soundIndex=-1;return;}if(a.soundIndex!==a.index){a.soundIndex=a.index;a.nextSoundAt=420;playMoveSound();return;}if(step.duration>700&&a.elapsed>=a.nextSoundAt&&a.elapsed<step.duration){a.nextSoundAt+=420;playMoveSound();}}
   function cancelPreview(){if(state.anim){stopAnimation();state.anim=null;}state.completed=null;}
   function getTransform(){
     if(mode().translation){const a=M.parseNumber($('move-x').value),b=M.parseNumber($('move-y').value),T=M.translation(a,b);T.label=`가로 ${sign(a)}, 세로 ${sign(b)}`;return T;}
@@ -156,15 +164,16 @@
     $('result-card').classList.remove('just-finished');void $('result-card').offsetWidth;if(!state.settings.reduced)$('result-card').classList.add('just-finished');$('playback-progress').style.width='100%';updateControls();
     $('coordinate-plane').setAttribute('aria-label',`이동 완료. ${result}. ${resultDescription(a.before,a.after,a.T)}`);
   }
+  function finish(){playArrivalSound();complete();}
   function frame(now){
     const a=state.anim;if(!a||!a.playing)return;if(!a.previous)a.previous=now;const delta=Math.min(120,now-a.previous);a.previous=now;
-    const step=a.steps[a.index],speed=step.phase==='axis'?1:Number($('speed').value);a.elapsed+=delta*speed;
-    if(a.elapsed>=step.duration){a.elapsed=0;a.index++;if(a.index>=a.steps.length-1){complete();return;}}
+    const step=a.steps[a.index],speed=step.phase==='axis'?1:Number($('speed').value);a.elapsed+=delta*speed;updateMotionSound(a,step);
+    if(a.elapsed>=step.duration){a.elapsed=0;a.index++;if(a.index>=a.steps.length-1){finish();return;}}
     renderAnimation();raf=requestAnimationFrame(frame);
   }
-  function play(){if(state.sourceDirty){showError('source-error','새 출발 위치를 먼저 적용해 주세요.');return;}let a=state.anim||prepare();if(!a)return;if(state.settings.reduced){nextStep();return;}if(a.elapsed>=a.steps[a.index].duration){a.elapsed=0;a.index++;if(a.index>=a.steps.length-1){complete();return;}}a.playing=true;a.previous=0;updateControls();raf=requestAnimationFrame(frame);}
+  function play(){if(state.sourceDirty){showError('source-error','새 출발 위치를 먼저 적용해 주세요.');return;}let a=state.anim||prepare();if(!a)return;if(state.settings.reduced){nextStep();return;}if(a.elapsed>=a.steps[a.index].duration){a.elapsed=0;a.index++;if(a.index>=a.steps.length-1){finish();return;}}a.playing=true;a.previous=0;updateControls();raf=requestAnimationFrame(frame);}
   function pause(){if(!state.anim)return;if(state.anim.playing){stopAnimation();updateControls();}else play();}
-  function nextStep(){let a=state.anim||prepare();if(!a)return;stopAnimation();const s=a.steps[a.index];if(a.elapsed>=s.duration){a.index++;if(a.index>=a.steps.length-1){complete();return;}}a.elapsed=a.steps[a.index].duration;renderAnimation();updateControls();}
+  function nextStep(){let a=state.anim||prepare();if(!a)return;stopAnimation();let s=a.steps[a.index];if(a.elapsed>=s.duration){a.index++;if(a.index>=a.steps.length-1){finish();return;}}s=a.steps[a.index];if(movingPhases.has(s.phase))playMoveSound();a.elapsed=s.duration;renderAnimation();updateControls();}
   function replay(){const a=prepare(true);if(!a)return;toast('직전 움직임만 다시 재생합니다. 이동이 추가로 적용되지는 않아요.');if(state.settings.reduced)nextStep();else play();}
   function undo(){const f=family();if(state.anim){cancelPreview();syncSource();ready();toast('진행 중인 이동을 취소하고 출발 상태로 돌아왔어요.');return;}if(!f.history.length)return;const e=f.history.pop();f.current=e.before;f.last=f.history.at(-1)||null;state.completed=null;syncSource();plane.fit([f.current]);updateHistory();ready();toast('직전 이동 한 번을 취소했어요.');}
   function reset(){cancelPreview();const f=family();f.current=f.initial;f.history=[];f.last=null;syncSource();clearErrors();plane.fit([f.current]);updateHistory();ready();toast('이 실험의 처음 위치로 돌아왔어요.');}
@@ -232,6 +241,8 @@
   $('place-point').addEventListener('click',()=>{state.placing=!state.placing;plane.placing=state.placing;$('place-point').setAttribute('aria-pressed',String(state.placing));$('placement-banner').hidden=!state.placing;$('coordinate-plane').classList.toggle('placing',state.placing);});
   $('run').addEventListener('click',play);$('pause').addEventListener('click',pause);$('step').addEventListener('click',nextStep);$('replay').addEventListener('click',replay);$('undo').addEventListener('click',undo);$('reset').addEventListener('click',reset);
   $('zoom-in').addEventListener('click',()=>plane.zoom(1.2));$('zoom-out').addEventListener('click',()=>plane.zoom(1/1.2));$('fit-view').addEventListener('click',()=>{const a=state.anim||state.completed;plane.fit(a?[a.before,a.after]:[family().current],a?.T||null);});
+  $('sound-effects').checked=state.settings.sound;
+  $('sound-effects').addEventListener('change',()=>{state.settings.sound=$('sound-effects').checked;save();});
   const settingMap={'show-original':'original','show-trail':'trail','show-reps':'reps','chess-pattern':'chess','reduce-motion':'reduced'};
   Object.entries(settingMap).forEach(([id,key])=>$(id).addEventListener('change',()=>{state.settings[key]=$(id).checked;settingsToUI();save();if(state.anim){if(key==='reduced'&&state.settings.reduced)stopAnimation();renderAnimation();updateControls();}else if(state.completed){const a=state.completed;plane.render({before:a.before,after:a.after,T:a.T,phase:'result',dx:a.T.a?.num||0,dy:a.T.b?.num||0,t:1,settings:state.settings,direct:a.direct});}else ready();plane.drawGrid();}));
   window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change',e=>{if(e.matches){state.settings.reduced=true;settingsToUI();if(state.anim)stopAnimation();updateControls();}});
