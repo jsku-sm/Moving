@@ -1,0 +1,3 @@
+# Optional: used only when deploying app.py with Streamlit.
+# GitHub Pages or opening index.html needs no Python packages.
+streamlit==1.51.0

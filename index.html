@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7f4">
+  <meta name="description" content="공통수학2 · 점과 도형의 평행이동과 대칭이동을 한 칸씩 실험하는 수학 학습 도구">
+  <title>이동 실험실 · 점과 도형</title>
+  <style>:root{--bg:#f6f7f4;--card:#fff;--ink:#20394d;--muted:#6e7e8b;--line:#e0e6e6;--teal:#167d75;--teal-soft:#eaf5f1;--blue:#235cce;--blue-soft:#eef3ff;--orange:#bd613e;--orange-soft:#fff4ea;--purple:#8061ab;--radius:18px;--shadow:0 3px 18px #283b4f05;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',Arial,sans-serif;color:var(--ink);font-synthesis:none;line-height:1.6}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-size:14px}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;min-height:44px;transition:background .16s,border-color .16s,box-shadow .16s;touch-action:manipulation}button:hover:not(:disabled){filter:brightness(.97)}button:disabled{opacity:.43;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid #76aaa2;outline-offset:3px}input,select,textarea{width:100%;min-width:0;border:1px solid #d7e0e2;border-radius:9px;background:#fff;padding:9px 11px;min-height:44px;outline:0}input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #167d7510}input:disabled,select:disabled{background:#f5f6f6}input[type=checkbox]{accent-color:var(--teal);width:17px;height:17px;min-height:0;flex-shrink:0}fieldset{margin:0;padding:0;border:0;min-width:0}h1,h2,h3,p{margin:0}h2{font-size:16px;line-height:1.45}h3{font-size:16px}small{font-size:11px}em{font-style:normal}svg{display:block}summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;justify-content:space-between}summary::-webkit-details-marker{display:none}[hidden]{display:none!important}.shell{max-width:1520px;margin:auto;padding:27px 34px 18px}.masthead{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:26px}.brand-group{display:flex;gap:14px;align-items:center}.brand-mark{width:51px;height:55px;background:var(--teal);border-radius:15px;display:grid;place-items:center;box-shadow:0 3px 0 #dcece4}.brand-mark svg{width:38px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.brand-mark circle{fill:#a7d9bd}.eyebrow{font-size:10px;letter-spacing:1.8px;font-weight:750;color:var(--teal);margin-bottom:4px}.eyebrow span{letter-spacing:0;margin-left:5px;font-weight:550;color:var(--muted)}h1{font-size:27px;font-weight:750;letter-spacing:-1.1px;line-height:1.35}h1 em{color:var(--teal)}.header-actions{display:flex;gap:12px;align-items:center}.ghost{color:var(--muted)}.small{font-size:12px;padding:0 8px}.badge-button{background:#fff;border:1px solid #e2e6d9;border-radius:24px;padding:0 15px;font-size:12px;font-weight:650;color:#7b7242}.mode-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:19px}.mode-card{display:flex;align-items:center;position:relative;padding:17px 16px;text-align:left;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:14px;min-height:82px}.mode-card.active{background:var(--teal-soft);border:1.5px solid #58958a;box-shadow:0 2px 0 #dcece5}.mode-card svg{height:34px;width:36px;stroke:#8c9caa;stroke-width:1.8;fill:none;flex-shrink:0}.mode-card.active svg{stroke:var(--teal)}.mode-card b{display:block;font-size:14px;font-weight:700}.mode-card small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.mode-number{position:absolute;right:12px;top:8px;font-size:9px;font-weight:700;letter-spacing:.8px;color:#bac4c8}.mode-card.active .mode-number{color:#5c978b}.learning-bar{display:flex;align-items:center;gap:18px;margin-bottom:17px}.segmented{display:flex;padding:4px;border-radius:11px;background:#e9edeb;flex-shrink:0}.segmented button{min-height:35px;border-radius:8px;font-size:12px;padding:0 16px;color:var(--muted)}.segmented .active{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 2px 5px #243b4a0c}.learning-bar>p{font-size:12px;color:var(--muted)}.learning-bar>.text-button{margin-left:auto}.text-button{font-size:12px;color:var(--teal);padding:0 5px;min-height:38px;font-weight:650}.workspace{display:grid;grid-template-columns:244px minmax(0,1fr) 270px;gap:18px;align-items:start}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.input-panel{overflow:hidden}.input-panel>summary{padding:15px 18px;font-size:14px;font-weight:750;background:#fff;border-bottom:1px solid #eff1f1}.summary-hint{display:none;font-size:11px;font-weight:400;color:var(--muted)}.input-content{padding:18px}.section-caption{display:flex;align-items:center;gap:8px;margin-bottom:13px}.section-caption h2{font-size:12px;font-weight:700}.step-circle{background:#eef3f2;border-radius:7px;width:23px;height:23px;display:grid;place-items:center;color:var(--teal);font-size:11px;font-weight:750;flex-shrink:0}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.field-row label>span,.equation-field>span{font-size:11px;display:block;margin-bottom:5px;font-weight:650}.field-row label small{float:right;font-weight:400;color:#98a2a8}.field-row input{text-align:center;font-size:18px;font-weight:650;font-variant-numeric:tabular-nums}.input-tools{display:flex;gap:5px;margin-top:8px}.compact{min-height:38px;padding:6px 11px;font-size:11px;border-radius:8px}.input-tools .compact{padding-left:7px;padding-right:7px;font-size:10px;flex:1}.outline{background:#fff;border:1px solid #d8e1e3;border-radius:9px;padding:8px 13px;font-size:12px;font-weight:550}.primary{background:var(--teal);border:1px solid var(--teal);border-radius:10px;color:#fff;font-size:13px;font-weight:700;padding:10px 19px;box-shadow:0 3px 0 #0b665317}.primary:hover{background:#126c65}.current-source{margin:17px 0 21px;padding:11px 12px;background:#f7f9f8;border:1px solid #e7edeb;border-radius:9px;overflow-wrap:anywhere}.current-source>span{font-size:10px;font-weight:650;display:flex;justify-content:space-between;color:var(--muted);gap:5px}.current-source small{font-size:9px;color:var(--teal)}.current-source>strong{font-size:14px;font-weight:650;display:block;margin-top:3px;line-height:1.6}.current-source p{font-size:11px;color:var(--orange);margin-top:6px}.motion-input{margin-bottom:14px}.field-heading{display:flex;align-items:center;justify-content:space-between;font-size:11px;margin-bottom:6px}.field-heading b{margin-left:5px;font-size:13px;font-family:Georgia,serif;font-style:italic}.x-motion .field-heading{color:var(--teal)}.y-motion .field-heading{color:var(--orange)}.direction-pill{font-size:9px;background:var(--teal-soft);padding:2px 7px;border-radius:20px}.y-motion .direction-pill{background:var(--orange-soft)}.number-control{display:grid;grid-template-columns:36px 1fr 36px;background:#fafcfc;border:1px solid #d8e1e3;border-radius:9px;overflow:hidden}.number-control input{background:transparent;border:0;border-radius:0;padding:5px 0;box-shadow:none;text-align:center;font-size:20px;font-weight:700;min-width:0;height:45px}.number-control button{font-size:20px;font-weight:400;min-height:44px;color:#79938d}.direction-choice{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px}.direction-choice button{min-height:28px;font-size:10px;border-radius:5px;color:var(--muted)}.direction-choice button.chosen{background:var(--teal-soft);color:var(--teal);font-weight:650}.y-motion .direction-choice button.chosen{background:var(--orange-soft);color:var(--orange)}.select-label{display:block;font-size:11px;font-weight:550;margin-top:12px}.select-label select{font-size:11px;margin-top:5px;padding:8px;min-height:38px}.display-options{margin-top:19px;border-top:1px solid #edf0f0}.display-options>summary{color:var(--muted);font-size:11px;font-weight:650}.display-options>div{display:grid;gap:1px}.display-options label{display:flex;align-items:center;gap:9px;font-size:11px;min-height:36px}.equation-field input{font-family:inherit;font-size:12px}.shape-presets{display:flex;gap:4px;margin-top:7px;flex-wrap:wrap}.shape-presets button{min-height:29px;padding:2px 8px;border-radius:5px;background:#f1f4f3;color:var(--muted);font-size:10px}.equation-preview{margin:9px 0;font-size:12px;line-height:1.7;overflow-wrap:anywhere;color:var(--blue)}.wide{width:100%}.field-note{font-size:10px;color:var(--muted);line-height:1.8;margin-top:8px}.axis-presets{display:grid;grid-template-columns:1fr 1fr;gap:7px}.axis-presets button{border:1px solid #e3e0ec;border-radius:8px;font-size:12px;min-height:37px;color:var(--purple)}.axis-presets .chosen{background:#f0ecf7;border-color:#ab96c8}.axis-params{margin-top:12px}.axis-note{background:#f6f3fa;border-left:2px solid #baaad0;color:#80708f;font-size:11px;line-height:1.8;padding:10px;margin-top:14px;border-radius:0 7px 7px 0}.inline-error{background:#fff0ee;border:1px solid #efd1ca;border-radius:8px;color:#ab4432;font-size:11px;line-height:1.8;margin-top:10px;padding:9px}.board-card{overflow:hidden}.board-header{height:55px;display:flex;align-items:center;justify-content:space-between;padding:0 17px;border-bottom:1px solid #e9eded}.board-header>div:first-child{display:flex;align-items:center;gap:8px}.board-header b{font-size:12px;font-weight:650}.live-dot{height:6px;width:6px;background:#2d9987;border-radius:50%;box-shadow:0 0 0 3px #eaf5ed}.board-tools{display:flex;gap:4px}.board-tools button{width:32px;min-height:32px;height:32px;border:1px solid #e5eaea;border-radius:7px;font-size:17px;color:var(--muted);display:grid;place-items:center}.board-surface{height:clamp(420px,40vw,575px);position:relative;background:#fcfcf9;overflow:hidden}.board-surface svg{width:100%;height:100%;touch-action:none;cursor:grab;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}.board-surface svg:active{cursor:grabbing}.board-surface svg.placing{cursor:crosshair}#placement-banner{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);white-space:nowrap;padding:8px 13px;background:#245d56;color:#fff;font-size:11px;border-radius:24px;pointer-events:none}.tick{font-size:10px;fill:#8b99a4;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:#fcfcf9;stroke-width:3;stroke-linejoin:round}.axis-title{font-size:12px;fill:#6f8597;font-weight:700;paint-order:stroke;stroke:#fcfcf9;stroke-width:3}.graph-label{pointer-events:none}.board-footer{border-top:1px solid #edf0f0;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px}.legend{display:flex;align-items:center;gap:12px;font-size:9px;color:var(--muted)}.legend>span{display:flex;align-items:center;gap:5px;white-space:nowrap}.legend i{display:inline-block;width:6px;height:6px;background:#a8b5c2;border-radius:50%}.legend .legend-current{background:var(--blue)}.legend .legend-axis{border-top:2px dashed var(--purple);width:13px;height:0;border-radius:0;background:none}.board-footer small{font-size:8px;color:#8c99a2;text-align:right}.playback{padding:0 17px 7px;border-top:1px solid #e8eded;background:#fff}.progress-track{height:3px;background:#edf2f1;margin:0 -17px 15px}.progress-track span{display:block;width:0;height:100%;background:#64a89a;transition:width .12s linear}.playback-controls{display:flex;align-items:center;gap:8px}.playback-controls .primary{flex:1;white-space:nowrap;padding-left:10px;padding-right:10px}.playback-controls .outline{padding:9px 11px;white-space:nowrap;font-size:11px}.speed-control{font-size:9px;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:6px}.speed-control select{width:75px;min-height:41px;padding:7px;font-size:10px;background:#fafcfc}.secondary-controls{display:flex;align-items:center;gap:8px;margin-top:5px}.secondary-controls button{font-size:10px;color:var(--muted);min-height:36px;padding:0 4px}.secondary-controls button+button:before{content:'';display:inline-block;height:9px;border-left:1px solid #e5eaea;margin-right:12px}.keyboard-hint{margin-left:auto;font-size:9px;color:#9aabb2}.path-explanation{font-size:10px;line-height:1.8;color:#7b8990;margin:10px 5px 0;display:flex;gap:9px}.path-explanation>span{flex-shrink:0;color:var(--teal);font-weight:650}.board-actions{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin:6px 4px}.board-actions>details{max-width:66%;flex:1}.board-actions summary{font-size:11px;justify-content:flex-start;gap:7px}.board-actions summary>span{border:1px solid #dce4e2;background:#fff;border-radius:5px;min-width:20px;text-align:center;font-size:10px;color:var(--teal)}.board-actions>div{display:flex;gap:13px}.board-actions .text-button{font-size:10px}#history-list{max-height:210px;overflow:auto}.history-item{font-size:10px;padding:8px 0;border-top:1px solid var(--line);overflow-wrap:anywhere}.history-item b{font-weight:600;color:var(--teal)}.empty-note{font-size:11px;color:var(--muted);padding:7px 0}.learning-panel{display:grid;gap:13px}.coach-card{padding:19px 18px 16px;background:#fff}.coach-heading{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:13px}.section-kicker{font-size:10px;font-weight:750;color:var(--muted);letter-spacing:.15px}.step-badge{font-size:8px;font-weight:750;background:var(--teal-soft);color:var(--teal);border-radius:5px;padding:3px 7px;white-space:nowrap;letter-spacing:1px}.coach-card h2{font-size:18px;letter-spacing:-.55px;margin-bottom:9px}.coach-card>p{font-size:12px;line-height:1.85;color:#6c7c88;word-break:keep-all}.stage-checklist{display:flex;margin:18px 0 14px;gap:5px}.stage-checklist span{flex:1;padding:5px 1px;background:#f1f4f3;color:#a0acae;border-radius:5px;font-size:10px;text-align:center;font-weight:600}.stage-checklist .active{background:var(--teal-soft);color:var(--teal)}.stage-checklist .finished{background:#f0f4f2;color:#6c9186}.coach-tip{font-size:11px;line-height:1.8;background:#f6f8f6;border-left:2px solid #97beb0;border-radius:0 8px 8px 0;padding:10px 12px;color:#628678}.calculation-card{padding:16px 18px}.coordinate-calculation{margin-top:12px;display:grid;gap:9px}.calc-row{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:550;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.calc-row .axis-letter{border-radius:7px;background:var(--teal-soft);color:var(--teal);font-family:Georgia,serif;font-style:italic;width:27px;height:28px;display:grid;place-items:center;flex-shrink:0}.calc-row.y .axis-letter{background:var(--orange-soft);color:var(--orange)}.calc-row.muted{opacity:.5}.calc-row strong{font-weight:750}.calc-note{font-size:10px;line-height:1.8;color:var(--muted)}#formula-details{border-top:1px solid #edf0f0;margin-top:13px;padding-top:4px}#formula-details>summary{font-size:10px;font-weight:650;color:var(--muted);gap:7px}#formula-explanation{font-size:11px;line-height:1.9;color:#647986;overflow-wrap:anywhere;padding-bottom:5px}#formula-explanation .math-block{font-size:13px;background:#f8faf9;color:var(--ink);padding:9px;border-radius:6px;margin:7px 0}.result-card{padding:16px 18px;background:var(--blue-soft);border-color:#dce5f7}.result-heading{display:flex;gap:7px;align-items:center;margin-bottom:11px;color:var(--blue)}.result-heading>span{font-size:15px}.result-heading>h2{font-size:11px;font-weight:700}.result-value{font-size:16px;font-weight:750;letter-spacing:-.25px;line-height:1.65;overflow-wrap:anywhere;color:#6580a1}.result-value.ready{font-size:21px;color:#1f477b}.result-card>p{font-size:11px;line-height:1.85;margin-top:7px;color:#7087a4;word-break:keep-all}.result-card .text-button{font-size:10px;color:var(--blue);padding:0;min-height:30px}.challenge-card{padding:17px;background:#fffcf4;border-color:#e8dfc5}.challenge-card .coach-heading{margin-bottom:6px}.challenge-card h2{font-size:14px;margin-bottom:12px}.challenge-card .section-kicker{color:#968350}.challenge-card .text-button{font-size:10px;color:#968350;min-height:30px}.challenge-card .select-label select{background:white}.challenge-card input{background:white}.challenge-actions{display:flex;gap:7px;margin-top:12px}.challenge-card .primary{background:#9a8040;border-color:#9a8040;flex:1}#prediction-feedback{font-size:11px;line-height:1.85;margin-top:9px;color:#97834b}#prediction-shape>span{font-size:11px}#predict-equation{margin-top:5px;font-size:12px}.app-footer{display:flex;gap:24px;border-top:1px solid #e3e8e4;padding-top:16px;margin-top:25px;font-size:10px;color:#92a098}.app-footer>span:first-child{color:#6f8b7c}.app-footer small{margin-left:auto;font-size:9px}dialog{border:1px solid #d9e3df;border-radius:21px;padding:30px;max-width:760px;width:calc(100% - 32px);max-height:88vh;box-shadow:0 20px 100px #17322e2a;color:var(--ink)}dialog::backdrop{background:#183a384d;backdrop-filter:blur(3px)}.dialog-header{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}.dialog-header h2{font-size:22px;letter-spacing:-.65px}.dialog-close{width:44px;height:44px;min-width:44px;background:#f1f5f3;border-radius:50%;font-size:27px;color:var(--muted)}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.help-grid article{background:#f5f8f5;border-radius:12px;padding:18px}.help-grid b{font-size:10px;color:var(--teal)}.help-grid h3{font-size:15px;line-height:1.7;margin:8px 0}.help-grid p,.help-bottom p,dialog>p{font-size:12px;line-height:1.9;color:#708078;word-break:keep-all}.help-bottom{padding:19px 0}.help-bottom h3{margin-bottom:8px}.help-bottom p+p{margin-top:10px}.help-bottom .field-note{font-size:11px;color:#8c9894}.help-bottom+button{width:100%}#progress-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.progress-item{padding:16px;border:1px solid #e0e7df;border-radius:12px;background:#f8f9f7}.progress-item.earned{background:#fff9e3;border-color:#d4c478}.progress-item b{display:block;font-size:13px;margin:6px 0}.progress-item span{font-size:11px;color:var(--muted)}#clear-progress{margin-top:15px}#share-dialog{max-width:550px}#share-link{margin:16px 0;font-size:12px}#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);padding:13px 24px;background:#233e36;color:#fff;border:1px solid #ffffff26;border-radius:14px;box-shadow:0 5px 20px #173a2926;font-size:12px;z-index:999;max-width:calc(100% - 34px);white-space:normal;min-width:260px;text-align:center;pointer-events:none}.skip-link{position:absolute;top:-70px;left:10px;background:white;padding:12px;z-index:100}.skip-link:focus{top:10px}.axis-pulse{animation:axis-glow 1s ease-in-out 2}.finish-pulse{animation:finish-glow 1s ease-in-out 2}.result-card.just-finished{animation:result-glow 1s ease-in-out 2}@keyframes axis-glow{0%,100%{opacity:1}50%{opacity:.42}}@keyframes finish-glow{0%,100%{opacity:1}50%{opacity:.65}}@keyframes result-glow{50%{box-shadow:0 0 0 4px #235cce1f}}body.reduced *{animation:none!important;transition:none!important}body.teaching .coach-card{border-color:#c5ddd3}
+@media(min-width:1450px){.workspace{grid-template-columns:256px minmax(0,1fr) 288px;gap:20px}.input-content{padding:20px}.coach-card{padding:21px}.board-surface{height:570px}.playback-controls .primary{font-size:14px}.calc-row{font-size:15px}}
+@media(max-width:1190px){.shell{padding:22px}.workspace{grid-template-columns:230px minmax(0,1fr);gap:16px}.learning-panel{grid-column:1/-1;grid-template-columns:1.2fr 1fr 1fr;align-items:start}.challenge-card{grid-column:1/-1;max-width:none}.challenge-card .field-row{max-width:280px}.mode-card{padding:16px 12px;gap:9px}.mode-card b{font-size:12px}.mode-card small{font-size:10px}.mode-card svg{width:30px}.board-surface{height:540px}.masthead{margin-bottom:22px}h1{font-size:25px}.input-content{padding:16px}.learning-bar{gap:12px}.learning-bar>p{font-size:11px}.playback-controls .primary{max-width:230px}.challenge-card{display:grid;grid-template-columns:1.2fr 1fr;gap:0 25px}.challenge-card .coach-heading,.challenge-card h2{grid-column:1/-1}.challenge-card .challenge-actions{align-self:end;margin-top:10px}.challenge-card #prediction-feedback{grid-column:1/-1}.header-actions .ghost{font-size:11px}}
+@media(max-width:800px){.shell{padding:18px}.masthead{align-items:flex-start;gap:12px}.header-actions{gap:6px;flex-direction:column;align-items:flex-end}.badge-button{min-height:32px;font-size:10px;padding:0 11px}.header-actions .ghost{min-height:29px;font-size:10px}.brand-mark{width:44px;height:48px;border-radius:12px}.brand-mark svg{width:34px}.brand-group{gap:10px}h1{font-size:23px;line-height:1.4}.eyebrow{font-size:8px}.mode-nav{gap:8px}.mode-card{flex-direction:column;align-items:flex-start;padding:13px 10px;gap:6px;min-height:97px}.mode-card svg{height:25px}.mode-card b{font-size:12px}.mode-card small{font-size:9px}.learning-bar{flex-wrap:wrap;gap:6px 12px}.learning-bar>p{order:3;width:100%;margin:4px 0}.learning-bar>.text-button{font-size:10px}.segmented button{font-size:11px;padding:0 13px}.workspace{grid-template-columns:208px minmax(0,1fr);gap:12px}.input-content{padding:13px}.section-caption h2{font-size:11px}.input-tools{flex-direction:column}.current-source{margin-bottom:16px}.board-surface{height:515px}.board-header{padding:0 12px}.board-header b{font-size:11px}.playback{padding-left:12px;padding-right:12px}.playback-controls{flex-wrap:wrap;gap:6px}.playback-controls .primary{max-width:none;min-width:110px}.playback-controls .outline{padding:8px;flex:1;min-width:95px}.speed-control{margin-left:0;flex:1;justify-content:flex-end}.keyboard-hint{display:none}.board-footer{align-items:flex-start;flex-direction:column;gap:6px}.board-actions{flex-wrap:wrap;gap:0}.board-actions>details{max-width:100%;flex-basis:100%}.board-actions>div{margin-left:auto}.learning-panel{grid-template-columns:1fr 1fr}.result-card{grid-column:2;grid-row:1}.calculation-card{grid-column:1/-1}.challenge-card{grid-column:1/-1}.app-footer{gap:8px;flex-wrap:wrap}.app-footer small{margin-left:auto}}
+@media(max-width:640px){.shell{padding:15px 12px}.masthead{margin-bottom:18px}.brand-mark{width:38px;height:43px;flex-shrink:0}.brand-mark svg{width:29px}h1{font-size:20px;max-width:210px}.brand-group{gap:8px}.eyebrow{font-size:7px;letter-spacing:1.2px}.eyebrow span{font-size:8px}.header-actions .ghost{font-size:0}.header-actions .ghost span{font-size:20px}.header-actions{flex-direction:row;align-items:center;gap:0}.badge-button{font-size:9px;padding:0 8px;white-space:nowrap}.mode-nav{grid-template-columns:1fr 1fr;gap:7px;margin-bottom:15px}.mode-card{flex-direction:row;align-items:center;padding:12px 11px;min-height:69px;gap:10px}.mode-card svg{width:27px;height:29px}.mode-card b{font-size:12px}.mode-card small{font-size:9px;margin-top:3px}.mode-number{font-size:8px;right:8px;top:5px}.segmented button{padding:0 11px}.learning-bar{margin-bottom:13px}.workspace{display:flex;flex-direction:column;gap:12px}.input-panel{width:100%}.summary-hint{display:inline}.input-panel>summary{padding:11px 15px;min-height:48px}.input-content{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;padding:16px}.input-content #source-fields{grid-column:1}.current-source{grid-column:1;margin:12px 0 0;align-self:start;grid-row:2}.input-content #transform-fields{grid-column:2;grid-row:1/4}.input-content .display-options{grid-column:1/-1;margin-top:10px}.input-content .inline-error{grid-column:1/-1;grid-row:auto}.input-tools{flex-direction:column}.field-row{gap:6px}.field-row input{font-size:17px}.input-content .section-caption{gap:5px}.input-content .section-caption h2{font-size:10px}.number-control{grid-template-columns:30px 1fr 30px}.direction-choice button{font-size:9px}.board-column{width:100%}.board-surface{height:440px}.board-header{height:49px}.board-header b{font-size:11px}.board-footer{flex-direction:row;align-items:center;padding:9px 11px}.board-footer small{font-size:7px;max-width:150px}.legend{gap:9px;font-size:8px}.playback-controls .primary{font-size:12px;min-height:44px;min-width:90px}.playback-controls .outline{font-size:10px;min-width:0;flex:initial;min-height:44px}.playback-controls{gap:5px}.speed-control{width:100%;margin-top:2px}.speed-control select{min-height:32px;padding:4px 7px;width:72px}.secondary-controls{margin-top:0}.learning-panel{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}.coach-card{padding:16px;grid-column:1/-1}.coach-card h2{font-size:18px}.coach-card>p{font-size:12px}.stage-checklist{margin:12px 0}.coach-tip{font-size:11px}.result-card{grid-column:auto;grid-row:auto;padding:15px 12px}.calculation-card{grid-column:auto;padding:15px 12px}.result-value.ready{font-size:17px}.calc-row{font-size:12px;gap:6px}.calculation-card .axis-letter{width:23px;height:25px}.challenge-card{display:block;grid-column:1/-1;padding:16px}.challenge-card .field-row{max-width:none}.result-heading h2{font-size:10px}.coach-heading{margin-bottom:9px}.app-footer>span:first-child{display:none}.app-footer{font-size:9px;margin-top:18px;padding-top:12px}dialog{padding:22px}.help-grid{grid-template-columns:1fr;gap:10px}.help-grid article{padding:14px}.dialog-header h2{font-size:19px}.dialog-close{width:38px;height:38px;min-width:38px}.help-grid h3{font-size:14px}.help-bottom{padding-top:17px}#progress-list{gap:8px}.progress-item{padding:11px}.progress-item b{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{body{background:#fff}.shell{padding:0}.header-actions,.input-panel,.learning-bar,.board-tools,.playback,.board-actions,.app-footer,.challenge-card,.mode-nav,.path-explanation{display:none!important}.workspace{display:block}.board-surface{height:600px}.learning-panel{margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr}.masthead{margin-bottom:14px}.board-column{width:100%}.card{break-inside:avoid}#coordinate-plane{height:600px}}
+@media(pointer:coarse){button,.compact,.text-button,.direction-choice button,.axis-presets button,.shape-presets button,.segmented button{min-height:44px}.board-tools button{width:44px;height:44px}.board-header{min-height:57px}.display-options label{min-height:44px}.field-row input,.equation-field input,.number-control input,.select-label select,textarea{font-size:16px}.speed-control select{min-height:44px;font-size:13px}.mode-card{min-height:76px}.input-tools .compact{font-size:11px}.mode-card small{font-size:10px}}
+@media(max-width:640px){.speed-control{flex:0 0 100%;width:100%;justify-content:flex-end;white-space:nowrap}}
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#run">이동 실행으로 바로 가기</a>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand-group"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M11 32V14h23M28 8l7 6-7 6M11 32h22V26"/><circle cx="11" cy="32" r="4"/><circle cx="33" cy="26" r="3"/></svg></div><div><p class="eyebrow">MATH IN MOTION <span>· 공통수학2</span></p><h1>점과 도형의 <em>이동 실험실</em></h1></div></div>
+      <div class="header-actions"><button id="help-open" class="ghost small"><span aria-hidden="true">ⓘ</span> 좌표가 처음이라면</button><button id="progress-open" class="badge-button" title="도전하기 학습 기록 보기">✧ <span id="badge-count">나의 배지 0/4</span></button></div>
+    </header>
+    <nav class="mode-nav" aria-label="실험 메뉴">
+      <button class="mode-card active" data-mode="point-translation" aria-pressed="true"><span class="mode-number">01</span><svg viewBox="0 0 36 32" aria-hidden="true"><circle cx="7" cy="24" r="4"/><path d="M12 24h14V8m-5 5 5-5 5 5"/><circle cx="26" cy="8" r="3"/></svg><span><b>점의 평행이동</b><small>한 칸씩, 좌표의 변화</small></span></button>
+      <button class="mode-card" data-mode="point-reflection" aria-pressed="false"><span class="mode-number">02</span><svg viewBox="0 0 36 32" aria-hidden="true"><path d="M18 2v28" stroke-dasharray="3 3"/><circle cx="6" cy="18" r="4"/><circle cx="30" cy="18" r="4"/><path d="M10 18h16"/></svg><span><b>점의 대칭</b><small>같은 거리, 반대편 점</small></span></button>
+      <button class="mode-card" data-mode="shape-translation" aria-pressed="false"><span class="mode-number">03</span><svg viewBox="0 0 36 32" aria-hidden="true"><circle cx="10" cy="22" r="7"/><circle cx="26" cy="10" r="7"/><path d="m17 20 7-7m-6 0h6v6"/></svg><span><b>도형의 평행이동</b><small>움직임을 식으로 연결</small></span></button>
+      <button class="mode-card" data-mode="shape-reflection" aria-pressed="false"><span class="mode-number">04</span><svg viewBox="0 0 36 32" aria-hidden="true"><path d="M18 2v28" stroke-dasharray="3 3"/><path d="M4 25V9l9 16Zm28 0V9l-9 16Z"/></svg><span><b>도형의 대칭이동</b><small>거울 속 도형과 방정식</small></span></button>
+    </nav>
+    <div class="learning-bar">
+      <div class="segmented" role="group" aria-label="학습 방식"><button data-learning="guided" class="active" aria-pressed="true">따라 하기</button><button data-learning="free" aria-pressed="false">자유 실험</button><button data-learning="challenge" aria-pressed="false">도전하기 <span aria-hidden="true">✧</span></button></div>
+      <p id="learning-description">방향을 살피고, 한 칸씩 움직여 보세요.</p>
+      <button id="load-example" class="text-button">↻ 예제 바꾸기</button>
+    </div>
+    <div class="workspace">
+      <details class="input-panel card" id="input-panel" open>
+        <summary><span>실험 설정</span><span class="summary-hint">펼치기 / 접기</span></summary>
+        <div class="input-content">
+          <fieldset id="source-fields">
+            <div class="section-caption"><span class="step-circle">1</span><h2 id="source-title">어디에서 출발할까요?</h2></div>
+            <div id="point-inputs"><div class="field-row"><label><span>x좌표 <small>가로</small></span><input id="point-x" value="-2" inputmode="text" autocomplete="off" aria-label="점의 x좌표" maxlength="32"></label><label><span>y좌표 <small>세로</small></span><input id="point-y" value="3" inputmode="text" autocomplete="off" aria-label="점의 y좌표" maxlength="32"></label></div><div class="input-tools"><button id="apply-point" class="outline compact" type="button">출발점 적용</button><button id="place-point" class="ghost compact" type="button" aria-pressed="false">⌖ 좌표판에 놓기</button></div></div>
+            <div id="shape-inputs" hidden><label class="equation-field"><span>도형의 방정식</span><input id="shape-equation" value="(x-1)^2+(y-2)^2=4" placeholder="예: (x-1)^2+(y-2)^2=4" autocomplete="off" spellcheck="false" maxlength="260"></label><div class="shape-presets"><button data-preset="circle" type="button">원</button><button data-preset="line" type="button">직선</button><button data-preset="parabola" type="button">포물선</button><button data-preset="vertical" type="button">수직선</button></div><div id="equation-preview" class="equation-preview" aria-live="polite"></div><button id="apply-shape" type="button" class="outline compact wide">새 도형 적용</button><p class="field-note">x² 또는 x^2 모두 가능<br>일차·이차 다항 방정식 한 개를 입력해요.</p></div>
+          </fieldset>
+          <div id="source-error" class="inline-error" role="alert" hidden></div>
+          <div class="current-source"><span>이번 출발 <small id="current-sequence">처음 위치</small></span><strong id="current-source-value">P(−2, 3)</strong><p id="source-dirty" hidden>입력한 출발점을 먼저 적용해 주세요.</p></div>
+          <fieldset id="transform-fields">
+            <div class="section-caption"><span class="step-circle">2</span><h2 id="transform-title">얼마나 움직일까요?</h2></div>
+            <div id="translation-inputs">
+              <div class="motion-input x-motion"><div class="field-heading"><label for="move-x">가로 이동량 <b>a</b></label><span id="x-direction" class="direction-pill">오른쪽 +</span></div><div class="number-control"><button data-nudge="move-x:-1" aria-label="가로 이동량 1 줄이기" type="button">−</button><input id="move-x" value="3" inputmode="text" aria-label="가로 이동량 a" autocomplete="off" maxlength="32"><button data-nudge="move-x:1" aria-label="가로 이동량 1 늘리기" type="button">+</button></div><div class="direction-choice"><button data-direction="x:-1" type="button">← 왼쪽</button><button data-direction="x:1" type="button" class="chosen">오른쪽 →</button></div></div>
+              <div class="motion-input y-motion"><div class="field-heading"><label for="move-y">세로 이동량 <b>b</b></label><span id="y-direction" class="direction-pill">아래쪽 −</span></div><div class="number-control"><button data-nudge="move-y:-1" aria-label="세로 이동량 1 줄이기" type="button">−</button><input id="move-y" value="-2" inputmode="text" aria-label="세로 이동량 b" autocomplete="off" maxlength="32"><button data-nudge="move-y:1" aria-label="세로 이동량 1 늘리기" type="button">+</button></div><div class="direction-choice"><button data-direction="y:-1" type="button" class="chosen">↓ 아래쪽</button><button data-direction="y:1" type="button">위쪽 ↑</button></div></div>
+              <label class="select-label">이동 경로 <select id="path-mode"><option value="step">가로 → 세로 · 한 칸씩</option><option value="direct">직선으로 · 동시에</option></select></label>
+            </div>
+            <div id="reflection-inputs" hidden>
+              <div class="axis-presets" role="group" aria-label="대칭 기준"><button data-axis="xaxis" type="button" class="chosen">x축</button><button data-axis="yaxis" type="button">y축</button><button data-axis="origin" type="button">원점</button><button data-axis="diagonal" type="button">y = x</button></div>
+              <label class="select-label">대칭 기준 선택 <select id="axis-select"><option value="xaxis">x축 · y=0</option><option value="yaxis">y축 · x=0</option><option value="origin">원점 (0, 0)</option><option value="diagonal">직선 y=x</option><option value="antidiagonal">직선 y=−x</option><option value="vertical">직선 x=h</option><option value="horizontal">직선 y=k</option><option value="general">직선의 식 직접 입력</option><option value="center">점 (h, k)을 중심으로</option></select></label>
+              <div class="field-row axis-params" id="axis-params" hidden><label id="axis-h-label"><span>h</span><input id="axis-h" value="1" aria-label="대칭 기준 h" maxlength="32"></label><label id="axis-k-label"><span>k</span><input id="axis-k" value="1" aria-label="대칭 기준 k" maxlength="32"></label></div>
+              <label class="equation-field" id="general-axis-input" hidden><span>대칭축의 방정식</span><input id="axis-equation" value="x+y-1=0" placeholder="예: x+y-1=0" spellcheck="false" maxlength="260"></label>
+              <div class="axis-note" id="axis-note">굵은 점선이 거울의 기준이에요.<br>축까지의 거리를 비교해 보세요.</div>
+            </div>
+          </fieldset>
+          <div id="transform-error" class="inline-error" role="alert" hidden></div>
+          <details class="display-options"><summary>보기 설정 <span>⌄</span></summary><div><label><input type="checkbox" id="show-original" checked> 이동 전 모습 남기기</label><label><input type="checkbox" id="show-trail" checked> 자취 · 이동량 · 거리</label><label><input type="checkbox" id="show-reps"> 다른 대표점도 보기</label><label><input type="checkbox" id="chess-pattern" checked> 체스판 배경</label><label><input type="checkbox" id="reduce-motion"> 움직임 줄이기</label></div></details>
+        </div>
+      </details>
+      <section class="board-column" aria-label="좌표 실험">
+        <div class="board-card card">
+          <header class="board-header"><div><span class="live-dot"></span><b id="board-title">한 칸씩 움직이는 좌표</b></div><div class="board-tools"><button id="zoom-out" title="축소" aria-label="좌표판 축소">−</button><button id="fit-view" title="출발·도착 위치에 화면 맞추기" aria-label="화면 맞추기">⌖</button><button id="zoom-in" title="확대" aria-label="좌표판 확대">+</button></div></header>
+          <div class="board-surface" id="board-surface"><svg id="coordinate-plane" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="출발점, 이동 경로와 도착점을 표시하는 좌표판"></svg><span id="placement-banner" hidden>교차점을 눌러 출발점을 놓으세요.</span></div>
+          <div class="board-footer"><div class="legend"><span><i class="legend-original"></i>이동 전</span><span><i class="legend-current"></i>현재 / 이동 후</span><span id="axis-legend" hidden><i class="legend-axis"></i>대칭 기준</span></div><small id="grid-unit">한 칸 1단위 · 가로·세로 같은 비율</small></div>
+          <div class="playback"><div class="progress-track" aria-hidden="true"><span id="playback-progress"></span></div><div class="playback-controls"><button id="run" class="primary"><span aria-hidden="true">▶</span> <span id="run-label">이동 시작</span></button><button id="pause" class="outline" disabled>Ⅱ 일시정지</button><button id="step" class="outline" title="다음 설명 또는 다음 이동 단위">한 단계씩 <span aria-hidden="true">→</span></button><label class="speed-control">속도<select id="speed"><option value="0.6">천천히</option><option value="1" selected>보통</option><option value="2">빠르게</option></select></label></div><div class="secondary-controls"><button id="replay" disabled>↻ 다시 보기</button><button id="undo" disabled>↶ 실행 취소</button><button id="reset">처음으로</button><span class="keyboard-hint">Space · 정지 / 계속</span></div></div>
+        </div>
+        <p class="path-explanation" id="path-explanation"><span>알아두기</span> 가로 → 세로 경로는 좌표 변화를 나누어 보여주는 방법이에요. 동시에 움직여도 도착점은 같아요.</p>
+        <div class="board-actions"><details id="history-panel"><summary>이동 기록 <span id="history-count">0</span></summary><div id="history-list"><p class="empty-note">이동을 마치면 이곳에 기록이 쌓여요.</p></div><button id="export-history" class="text-button" disabled>기록 파일 저장</button></details><div><button id="save-image" class="text-button">↓ 좌표판 저장</button><button id="share-example" class="text-button">↗ 예제 링크</button></div></div>
+      </section>
+      <aside class="learning-panel" aria-label="현재 단계 설명과 결과">
+        <section class="coach-card card"><div class="coach-heading"><span class="section-kicker">한 단계씩 이해하기</span><span class="step-badge" id="step-badge">READY</span></div><h2 id="stage-title">출발점을 확인해요</h2><p id="stage-description">P(−2, 3)에서 출발해요. 가로로 +3, 세로로 −2만큼 이동해 볼까요?</p><div class="stage-checklist" id="stage-checklist"></div><div class="coach-tip" id="coach-tip">오른쪽·위쪽은 +<br>왼쪽·아래쪽은 −</div></section>
+        <section class="calculation-card card"><span class="section-kicker">좌표를 계산하면</span><div id="coordinate-calculation" class="coordinate-calculation"></div><details id="formula-details"><summary>식은 왜 이렇게 바뀔까요? <span>⌄</span></summary><div id="formula-explanation"></div></details></section>
+        <section class="result-card card" id="result-card"><div class="result-heading"><span id="result-icon">◎</span><h2>도착 결과</h2></div><div id="result-value" class="result-value">어디에 도착할까요?</div><p id="result-description">움직임이 끝나면 좌표와 식을 함께 확인해요.</p><button id="copy-result" class="text-button" hidden>결과 복사</button></section>
+        <section id="challenge-card" class="challenge-card card" hidden><div class="coach-heading"><span class="section-kicker">먼저 예상해 보세요</span><button id="next-challenge" class="text-button">다른 문제 ↗</button></div><h2 id="challenge-title">도착 좌표는?</h2><div id="prediction-point" class="field-row"><label><span>x′</span><input id="predict-x" autocomplete="off" aria-label="예상 x좌표" placeholder="?" maxlength="32"></label><label><span>y′</span><input id="predict-y" autocomplete="off" aria-label="예상 y좌표" placeholder="?" maxlength="32"></label></div><label id="prediction-shape" hidden><span>이동 후 방정식</span><input id="predict-equation" placeholder="예: y=2x-1" spellcheck="false" maxlength="260"></label><label class="select-label">그렇게 생각한 이유<select id="predict-reason"></select></label><div class="challenge-actions"><button id="check-prediction" class="primary compact">예상 확인</button><button id="show-hint" class="outline compact">힌트</button></div><p id="prediction-feedback" aria-live="polite"></p></section>
+      </aside>
+    </div>
+    <footer class="app-footer"><span>관찰하고 · 예상하고 · 설명하기</span><span>로그인·API 키 없이, 이 기기에서 계산합니다.</span><small>이동 실험실 v1.0</small></footer>
+  </main>
+  <dialog id="help-dialog"><div class="dialog-header"><div><p class="eyebrow">작은 성공부터 시작해요</p><h2>좌표와 친해지는 네 가지 약속</h2></div><button data-close="help-dialog" class="dialog-close" aria-label="도움말 닫기">×</button></div><div class="help-grid"><article><b>01 · 순서</b><h3>(x, y)는 가로, 세로</h3><p>(−2, 3)은 원점에서 왼쪽으로 2, 위로 3만큼 떨어진 위치예요. 점은 칸의 중앙이 아니라 격자의 교차점에 놓아요.</p></article><article><b>02 · 방향</b><h3>오른쪽·위쪽은 +</h3><p>−4에서 −2로 가도 오른쪽이므로 양의 방향이에요. 지금 있는 좌표의 부호와 움직이는 방향의 부호는 달라요.</p></article><article><b>03 · 평행이동</b><h3>점에는 더하고, 식에는 되돌려 넣어요</h3><p>점: (x, y) → (x+a, y+b)<br>도형: F(x−a, y−b)=0<br>새 좌표에서 이동량을 빼면 원래 좌표를 찾을 수 있어요.</p></article><article><b>04 · 대칭</b><h3>기준에서 같은 거리, 반대편</h3><p>축 대칭은 축에 수직으로 잰 거리가 같아요. 원점·점 대칭은 대칭 중심이 두 대응점의 중점이에요. 축 위의 점은 제자리예요.</p></article></div><div class="help-bottom"><h3>버튼도 서로 달라요</h3><p><b>다시 보기</b>는 직전 움직임만 재생해요. <b>여기서 이어 이동</b>은 도착한 위치에서 같은 조건을 한 번 더 적용해요. <b>실행 취소</b>는 직전 이동 한 번을 되돌려요.</p><p>좌표판은 끌어서 이동하고, + / −로 확대·축소해요. 터치 화면에서는 두 손가락 확대·축소도 가능해요. 확대되면 한 칸의 단위를 꼭 확인하세요.</p><p class="field-note">자유 실험의 좌표·이동량 입력 범위: −100~100. 정수·소수·분수 가능. 대칭축은 직선만 지원하며, 함수·로그·분수함수·여러 식·정의역 제한은 지원하지 않아요. 분수 계산과 방정식 변환은 유리수로 계산합니다. 그래프와 일부 대표점은 근사 표시될 수 있어요.</p></div><button class="primary" data-close="help-dialog">실험 시작하기 →</button></dialog>
+  <dialog id="progress-dialog"><div class="dialog-header"><div><p class="eyebrow">나의 작은 성공 기록</p><h2>네 가지 이동 배지</h2></div><button class="dialog-close" data-close="progress-dialog" aria-label="배지 닫기">×</button></div><p>메뉴마다 서로 다른 도전 문제 두 개의 결과와 이유를 맞히면 배지가 생겨요. 배지는 연습 기록이며 성적이나 숙달도 판정이 아니에요.</p><div id="progress-list"></div><p class="field-note">배지·보기 설정만 이 브라우저에 저장해요. 새로고침하면 실험 위치와 이동 기록은 초기화됩니다. 기기·브라우저가 바뀌면 배지 기록은 이어지지 않아요.</p><button id="clear-progress" class="outline compact">이 기기의 배지 기록 초기화</button></dialog>
+  <dialog id="share-dialog"><div class="dialog-header"><h2>예제 링크</h2><button class="dialog-close" data-close="share-dialog" aria-label="링크 창 닫기">×</button></div><p id="share-message">같은 출발점·도형과 이동 조건으로 시작하는 링크예요. 이동 기록이나 배지는 공유하지 않아요.</p><textarea id="share-link" rows="5" readonly aria-label="공유할 예제 링크"></textarea><button id="copy-link" class="primary compact">링크 복사</button></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p>이 앱은 JavaScript를 켜야 실행할 수 있습니다. 브라우저 설정을 확인해 주세요.</p></noscript>
+  <script>/* Move Lab — exact rational arithmetic and a closed polynomial grammar.
+ * No eval(), Function(), remote calculators or external dependencies.
+ * Polynomials are immutable Map<"xDegree,yDegree", Rational>, total degree <= 2.
+ */
+(function (root) {
+  'use strict';
+  const abs = n => n < 0n ? -n : n;
+  function gcd(a, b) { a = abs(a); b = abs(b); while (b) [a, b] = [b, a % b]; return a || 1n; }
+  class Q {
+    constructor(n = 0n, d = 1n) {
+      n = BigInt(n); d = BigInt(d);
+      if (!d) throw new Error('0으로 나눌 수 없습니다. 분모를 확인해 주세요.');
+      if (d < 0n) { n = -n; d = -d; }
+      const g = gcd(n, d); this.n = n / g; this.d = d / g;
+      if (abs(this.n).toString().length > 140 || this.d.toString().length > 140) throw new Error('계산할 수 있는 수의 범위를 넘었습니다. 더 간단한 수를 입력해 주세요.');
+      Object.freeze(this);
+    }
+    static from(v) {
+      if (v instanceof Q) return v;
+      if (typeof v === 'bigint') return new Q(v);
+      const s = String(v).trim();
+      if (s.includes('/')) { const a = s.split('/'); if (a.length !== 2) throw new Error('분수 형식을 확인해 주세요. 예: 1/2'); return Q.from(a[0]).div(Q.from(a[1])); }
+      if (!/^[+-]?(\d+(\.\d*)?|\.\d+)$/.test(s)) throw new Error('숫자, 소수 또는 분수를 입력해 주세요. 예: -2, 0.5, 1/2');
+      if (s.replace(/[^0-9]/g, '').length > 16) throw new Error('숫자는 16자리 이내로 입력해 주세요.');
+      const sign = s.startsWith('-') ? -1n : 1n, raw = s.replace(/^[+-]/, ''), [i, f = ''] = raw.split('.');
+      return new Q(sign * BigInt((i || '0') + f), 10n ** BigInt(f.length));
+    }
+    add(v) { v = Q.from(v); return new Q(this.n * v.d + v.n * this.d, this.d * v.d); }
+    sub(v) { return this.add(Q.from(v).neg()); }
+    mul(v) { v = Q.from(v); return new Q(this.n * v.n, this.d * v.d); }
+    div(v) { v = Q.from(v); return new Q(this.n * v.d, this.d * v.n); }
+    neg() { return new Q(-this.n, this.d); }
+    eq(v) { v = Q.from(v); return this.n === v.n && this.d === v.d; }
+    get zero() { return this.n === 0n; }
+    get num() { return Number(this.n) / Number(this.d); }
+    toString() { return this.d === 1n ? String(this.n) : `${this.n}/${this.d}`; }
+    toJSON() { return this.toString(); }
+  }
+  const q = v => Q.from(v), Z = q(0), O = q(1);
+  const constant = v => { v = q(v); return v.zero ? new Map() : new Map([['0,0', v]]); };
+  const variable = axis => new Map([[axis === 'x' ? '1,0' : '0,1', O]]);
+  const get = (p, i, j) => p.get(`${i},${j}`) || Z;
+  const add = (a, b) => { const p = new Map(a); for (const [k, v] of b) { const r = (p.get(k) || Z).add(v); if (r.zero) p.delete(k); else p.set(k, r); } return p; };
+  const scale = (p, v) => { v = q(v); return new Map([...p].map(([k, a]) => [k, a.mul(v)]).filter(([, a]) => !a.zero)); };
+  const sub = (a, b) => add(a, scale(b, -1));
+  function mul(a, b) {
+    let p = new Map();
+    for (const [ka, va] of a) for (const [kb, vb] of b) {
+      const aa = ka.split(',').map(Number), bb = kb.split(',').map(Number), i = aa[0] + bb[0], j = aa[1] + bb[1];
+      if (i + j > 2) throw new Error('이 버전은 x, y의 일차·이차 다항 방정식만 지원합니다. 예: y=2x+1, x²+y²=4');
+      p = add(p, new Map([[`${i},${j}`, va.mul(vb)]]));
+    }
+    return p;
+  }
+  function normalize(p) {
+    if (!p.size) return p;
+    let den = 1n; for (const [, v] of p) den = den * v.d / gcd(den, v.d);
+    let g = 0n; for (const [, v] of p) { const n = abs(v.n * (den / v.d)); g = g ? gcd(g, n) : n; }
+    const keys = ['2,0', '1,1', '0,2', '1,0', '0,1', '0,0'];
+    const first = keys.map(k => p.get(k)).find(Boolean), sign = first.n < 0n ? -1n : 1n;
+    return scale(p, new Q(den * sign, g));
+  }
+  function clean(s) {
+    return s.replace(/[−–－]/g, '-').replace(/[×·]/g, '*').replace(/÷/g, '/').replace(/[（]/g, '(').replace(/[）]/g, ')').replace(/＝/g, '=').replace(/²/g, '^2').replace(/³/g, '^3').replace(/\s/g, '').toLowerCase();
+  }
+  function parseExpression(text) {
+    const s = clean(text);
+    if (!s || s.length > 260) throw new Error('식을 260자 이내로 입력해 주세요. 예: (x-1)^2+(y-2)^2');
+    const tokens = []; let i = 0;
+    while (i < s.length) {
+      const m = s.slice(i).match(/^(\d+(?:\.\d*)?|\.\d+)/);
+      if (m) { tokens.push({ t: 'n', v: m[0] }); i += m[0].length; }
+      else if ('xy+-*/^()'.includes(s[i])) tokens.push({ t: s[i++] });
+      else throw new Error(`'${s[i]}'는 사용할 수 없습니다. x, y, 숫자와 + − × ÷, 괄호, 제곱을 사용해 주세요.`);
+      if (tokens.length > 180) throw new Error('식이 너무 깁니다. 식을 간단히 정리해서 입력해 주세요.');
+    }
+    let pos = 0, depth = 0;
+    const peek = () => tokens[pos]?.t;
+    function atom() {
+      if (++depth > 24) throw new Error('괄호가 너무 깊게 중첩되어 있습니다.');
+      let p; const t = tokens[pos++];
+      if (!t) throw new Error('식이 끝나지 않았습니다. 숫자 또는 변수를 확인해 주세요.');
+      if (t.t === 'n') p = constant(q(t.v));
+      else if (t.t === 'x' || t.t === 'y') p = variable(t.t);
+      else if (t.t === '(') { p = sum(); if (peek() !== ')') throw new Error('닫는 괄호 )가 필요합니다.'); pos++; }
+      else throw new Error('숫자·변수·괄호의 순서를 확인해 주세요.');
+      depth--; return p;
+    }
+    function power() {
+      let p = atom();
+      if (peek() === '^') { pos++; const t = tokens[pos++]; if (!t || t.t !== 'n' || !/^[012]$/.test(t.v)) throw new Error('지수는 0, 1, 2만 사용할 수 있습니다.'); const n = +t.v; p = n === 0 ? constant(1) : n === 1 ? p : mul(p, p); }
+      return p;
+    }
+    function unary() { if (peek() === '+' || peek() === '-') { const t = tokens[pos++].t; return scale(unary(), t === '-' ? -1 : 1); } return power(); }
+    function product() {
+      let p = unary();
+      while (pos < tokens.length) {
+        const t = peek();
+        if (t === '*') { pos++; p = mul(p, unary()); }
+        else if (t === '/') { pos++; const d = unary(); if ([...d.keys()].some(k => k !== '0,0')) throw new Error('분모에는 숫자만 사용할 수 있습니다. 변수의 분수식은 아직 지원하지 않습니다.'); p = scale(p, O.div(get(d, 0, 0))); }
+        else if (['n', 'x', 'y', '('].includes(t)) p = mul(p, unary());
+        else break;
+      }
+      return p;
+    }
+    function sum() { let p = product(); while (peek() === '+' || peek() === '-') { const t = tokens[pos++].t, b = product(); p = t === '+' ? add(p, b) : sub(p, b); } return p; }
+    const result = sum(); if (pos !== tokens.length) throw new Error('괄호 또는 연산기호의 위치를 확인해 주세요.'); return result;
+  }
+  function parseEquation(text) {
+    const parts = clean(text).split('=');
+    if (parts.length !== 2 || !parts[0] || !parts[1]) throw new Error('등호를 하나 넣어 방정식으로 입력해 주세요. 예: y=2x+1');
+    return normalize(sub(parseExpression(parts[0]), parseExpression(parts[1])));
+  }
+  function parseNumber(text, limit = 100) {
+    const p = parseExpression(String(text));
+    if ([...p.keys()].some(k => k !== '0,0')) throw new Error('좌표와 이동량에는 숫자·소수·분수만 입력해 주세요.');
+    const v = get(p, 0, 0);
+    if (Math.abs(v.num) > limit) throw new Error(`입력은 −${limit}부터 ${limit}까지 가능합니다. 작은 값부터 실험해 보세요.`);
+    return v;
+  }
+  const coeff = p => [[2, 0], [1, 1], [0, 2], [1, 0], [0, 1], [0, 0]].map(([i, j]) => get(p, i, j));
+  function evalQ(p, x, y) { x = q(x); y = q(y); let v = Z; for (const [k, c] of p) { const [i, j] = k.split(',').map(Number); let t = c; for (let a = 0; a < i; a++) t = t.mul(x); for (let a = 0; a < j; a++) t = t.mul(y); v = v.add(t); } return v; }
+  function evalN(p, x, y) { const [a, b, c, d, e, f] = coeff(p).map(v => v.num); return a * x * x + b * x * y + c * y * y + d * x + e * y + f; }
+  function substitute(p, lx, ly) {
+    let out = new Map();
+    for (const [key, c] of p) { const [i, j] = key.split(',').map(Number); let term = constant(c); for (let n = 0; n < i; n++) term = mul(term, lx); for (let n = 0; n < j; n++) term = mul(term, ly); out = add(out, term); }
+    return normalize(out);
+  }
+  const linear = (a, b, c) => add(add(scale(variable('x'), a), scale(variable('y'), b)), constant(c));
+  const identity = () => ({ m: [[O, Z], [Z, O]], t: [Z, Z] });
+  function translation(a, b) { a = q(a); b = q(b); return { ...identity(), t: [a, b], inv: { ...identity(), t: [a.neg(), b.neg()] }, kind: 'translation', a, b }; }
+  function reflection(A, B, C) {
+    A = q(A); B = q(B); C = q(C); const den = A.mul(A).add(B.mul(B));
+    if (den.zero) throw new Error('대칭축은 직선이어야 합니다. Ax+By+C=0에서 A와 B가 동시에 0일 수 없습니다.');
+    const m = [[O.sub(A.mul(A).mul(2).div(den)), A.mul(B).mul(-2).div(den)], [A.mul(B).mul(-2).div(den), O.sub(B.mul(B).mul(2).div(den))]];
+    const t = [A.mul(C).mul(-2).div(den), B.mul(C).mul(-2).div(den)];
+    return { m, t, inv: { m, t }, kind: 'axis', A, B, C };
+  }
+  function central(h, k) { h = q(h); k = q(k); const m = [[q(-1), Z], [Z, q(-1)]], t = [h.mul(2), k.mul(2)]; return { m, t, inv: { m, t }, kind: 'center', h, k }; }
+  function point(T, p) { return T.m.map((row, i) => row[0].mul(p[0]).add(row[1].mul(p[1])).add(T.t[i])); }
+  function shape(T, p) { const I = T.inv; return substitute(p, linear(I.m[0][0], I.m[0][1], I.t[0]), linear(I.m[1][0], I.m[1][1], I.t[1])); }
+  function axisFrom(text) {
+    const p = parseEquation(text), [a, b, c, A, B, C] = coeff(p);
+    if (!a.zero || !b.zero || !c.zero) throw new Error('대칭축은 직선만 가능합니다. 예: y=x, x=2, x+y-1=0');
+    return reflection(A, B, C);
+  }
+  function foot(T, p) {
+    if (T.kind === 'center') return [T.h, T.k];
+    const d = T.A.mul(p[0]).add(T.B.mul(p[1])).add(T.C).div(T.A.mul(T.A).add(T.B.mul(T.B)));
+    return [p[0].sub(T.A.mul(d)), p[1].sub(T.B.mul(d))];
+  }
+  const signNum = v => q(v).num >= 0 ? `+${q(v)}` : q(v).toString().replace('-', '−');
+  const fmt = v => q(v).toString().replace('-', '−');
+  function formatTerms(terms, unicode = true) {
+    let s = '';
+    for (const [cv, monom] of terms) { const c = q(cv); if (c.zero) continue; const neg = c.n < 0n, v = neg ? c.neg() : c; let n = monom && v.eq(1) ? '' : v.toString(); if (monom && v.d !== 1n && !unicode) n = `(${n})*`; s += (s ? (neg ? ' - ' : ' + ') : (neg ? '-' : '')) + n + monom; }
+    s ||= '0'; return unicode ? s.replace(/\^2/g, '²').replace(/-/g, '−') : s;
+  }
+  function squareTerm(v, center, unicode) { const h = q(center); const exp = unicode ? '²' : '^2'; if (h.zero) return `${v}${exp}`; return `(${v} ${h.num < 0 ? '+' : (unicode ? '−' : '-')} ${h.num < 0 ? fmt(h.neg()) : fmt(h)})${exp}`; }
+  function circleData(p) {
+    const [a, b, c, d, e, f] = coeff(p);
+    if (!a.zero && a.eq(c) && b.zero) { const h = d.neg().div(a.mul(2)), k = e.neg().div(a.mul(2)), r2 = h.mul(h).add(k.mul(k)).sub(f.div(a)); return { h, k, r2 }; }
+    return null;
+  }
+  function equation(p, unicode = true) {
+    const [a, b, c, d, e, f] = coeff(p), cd = circleData(p);
+    if (cd) { let s = `${squareTerm('x', cd.h, unicode)} + ${squareTerm('y', cd.k, unicode)} = ${cd.r2}`; return unicode ? s.replace(/-/g, '−') : s.replace(/−/g, '-'); }
+    if (a.zero && b.zero && c.zero && !e.zero) return 'y = ' + formatTerms([[d.neg().div(e), 'x'], [f.neg().div(e), '']], unicode);
+    if (a.zero && b.zero && c.zero && e.zero && !d.zero) return 'x = ' + (unicode ? fmt(f.neg().div(d)) : f.neg().div(d).toString());
+    if (b.zero && c.zero && !e.zero) return 'y = ' + formatTerms([[a.neg().div(e), 'x^2'], [d.neg().div(e), 'x'], [f.neg().div(e), '']], unicode);
+    if (a.zero && b.zero && !d.zero) return 'x = ' + formatTerms([[c.neg().div(d), 'y^2'], [e.neg().div(d), 'y'], [f.neg().div(d), '']], unicode);
+    return formatTerms([[a, 'x^2'], [b, 'xy'], [c, 'y^2'], [d, 'x'], [e, 'y'], [f, '']], unicode) + ' = 0';
+  }
+  function equivalent(a, b) { a = normalize(a); b = normalize(b); return coeff(a).every((v, i) => v.eq(coeff(b)[i])); }
+  function locus(p) {
+    const cs = coeff(p).map(v => v.num), norm = Math.max(...cs.map(Math.abs), 1), [a, b, c, d, e, f] = cs.map(v => v / norm), eps = 1e-11;
+    if (Math.abs(a) + Math.abs(b) + Math.abs(c) < eps) return Math.abs(d) + Math.abs(e) > eps ? { real: true, type: 'line' } : { real: false, reason: Math.abs(f) < eps ? '이 식은 좌표평면 전체를 나타냅니다. 점 또는 곡선을 나타내는 식을 입력해 주세요.' : '이 방정식을 만족하는 실수 좌표가 없습니다.' };
+    const det = a * c - b * b / 4;
+    if (Math.abs(det) > eps) {
+      const x = (-c * d + b * e / 2) / (2 * det), y = (b * d / 2 - a * e) / (2 * det), v = a * x * x + b * x * y + c * y * y + d * x + e * y + f;
+      if (det > eps) { const s = a > 0 ? 1 : -1; if (v * s > eps) return { real: false, reason: '이 방정식을 만족하는 실수 좌표가 없습니다. 예: x²+y²=4를 입력해 보세요.' }; return { real: true, type: Math.abs(v) < eps ? 'point' : 'ellipse', center: [x, y] }; }
+      return { real: true, type: 'hyperbola', center: [x, y] };
+    }
+    let u = Math.abs(a) > Math.abs(c) ? [a, b / 2] : [b / 2, c]; const length = Math.hypot(...u); u = u.map(v => v / length); const n = [-u[1], u[0]], linearNull = d * n[0] + e * n[1], lam = a + c;
+    if (Math.abs(linearNull) > eps) return { real: true, type: 'parabola' };
+    const lu = d * u[0] + e * u[1], r2 = (lu * lu / (4 * lam) - f) / lam;
+    return r2 < -eps ? { real: false, reason: '이 방정식을 만족하는 실수 좌표가 없습니다.' } : { real: true, type: 'parallel' };
+  }
+  function roots(a, b, c) {
+    const eps = 1e-10 * Math.max(Math.abs(a), Math.abs(b), Math.abs(c), 1);
+    if (Math.abs(a) < eps) return Math.abs(b) < eps ? [] : [-c / b];
+    let d = b * b - 4 * a * c; if (d < -eps) return []; d = Math.sqrt(Math.max(0, d)); if (!d) return [-b / (2 * a)];
+    const v = -0.5 * (b + (b >= 0 ? d : -d)); return [v / a, c / v];
+  }
+  const approxQ = n => q(n.toFixed(7));
+  function rationalRoot(v) { const n = BigInt(Math.round(Math.sqrt(Number(abs(v.n))))), d = BigInt(Math.round(Math.sqrt(Number(v.d)))); return v.n >= 0n && n * n === v.n && d * d === v.d ? new Q(n, d) : null; }
+  function representatives(p) {
+    const out = [], [a, b, c, d, e, f] = coeff(p), cd = circleData(p), lc = locus(p);
+    const put = (x, y, label = 'P', approx = false) => out.push({ p: [q(x), q(y)], label, approx });
+    if (cd && cd.r2.num >= 0) { put(cd.h, cd.k, 'C'); if (!cd.r2.zero) { const r = rationalRoot(cd.r2) || approxQ(Math.sqrt(cd.r2.num)), approx = !rationalRoot(cd.r2); put(cd.h.add(r), cd.k, 'P', approx); put(cd.h, cd.k.add(r), 'Q', approx); } return out; }
+    if (lc.type === 'point') { put(approxQ(lc.center[0]), approxQ(lc.center[1]), 'P', true); return out; }
+    if (a.zero && b.zero && c.zero) {
+      if (!e.zero) { for (const x of [q(0), q(2), q(-2)]) put(x, d.mul(x).add(f).neg().div(e), ['P', 'Q', 'R'][out.length]); }
+      else for (const y of [q(0), q(2), q(-2)]) put(f.neg().div(d), y, ['P', 'Q', 'R'][out.length]); return out;
+    }
+    if (b.zero && c.zero && !e.zero) { const vx = a.zero ? Z : d.neg().div(a.mul(2)); for (const x of [vx, vx.add(1), vx.sub(1)]) put(x, a.mul(x).mul(x).add(d.mul(x)).add(f).neg().div(e), ['V', 'P', 'Q'][out.length]); return out; }
+    if (a.zero && b.zero && !d.zero) { const vy = c.zero ? Z : e.neg().div(c.mul(2)); for (const y of [vy, vy.add(1), vy.sub(1)]) put(c.mul(y).mul(y).add(e.mul(y)).add(f).neg().div(d), y, ['V', 'P', 'Q'][out.length]); return out; }
+    const cs = coeff(p).map(v => v.num), [aa, bb, cc, dd, ee, ff] = cs;
+    const center = lc.center || [0, 0];
+    for (const delta of [0, 1, -1, 2, -2, 4, -4, 8, -8, 16]) {
+      const x = center[0] + delta;
+      for (const y of roots(cc, bb * x + ee, aa * x * x + dd * x + ff)) if (Number.isFinite(y) && Math.abs(y - center[1]) < 1e5) { put(approxQ(x), approxQ(y), ['P', 'Q', 'R'][out.length], true); if (out.length >= 3) return out; }
+      const y = center[1] + delta;
+      for (const xx of roots(aa, bb * y + dd, cc * y * y + ee * y + ff)) if (Number.isFinite(xx) && Math.abs(xx - center[0]) < 1e5) { put(approxQ(xx), approxQ(y), ['P', 'Q', 'R'][out.length], true); if (out.length >= 3) return out; }
+    }
+    return out;
+  }
+  function validateShape(p) { const lc = locus(p); if (!lc.real) throw new Error(lc.reason); const cs = coeff(p).map(v => Math.abs(v.num)); if (Math.max(...cs) > 1e12) throw new Error('계수가 너무 큽니다. 더 작은 수로 식을 입력해 주세요.'); return lc; }
+  root.MoveMath = { Q, q, Z, O, constant, variable, get, add, sub, mul, scale, normalize, parseExpression, parseEquation, parseNumber, coeff, evalQ, evalN, substitute, translation, reflection, central, point, shape, axisFrom, foot, fmt, signNum, equation, equivalent, circleData, locus, roots, representatives, validateShape };
+  if (typeof module !== 'undefined' && module.exports) module.exports = root.MoveMath;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+  <script>/* SVG coordinate plane. All axes share one scale. Conics are rendered analytically. */
+(function (root) {
+  'use strict';
+  const M = root.MoveMath, esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  const C = { ink:'#173753', blue:'#235cce', x:'#078579', y:'#cd643b', axis:'#8260b2', old:'#95a4b6', faint:'#d1dae6' };
+  const n = v => v instanceof M.Q ? v.num : +v;
+  const coord = p => p.map(n);
+  const F = v => Math.abs(v) < 1e-8 ? '0' : Number(v.toFixed(3)).toString().replace('-', '−');
+  class Plane {
+    constructor(svg, onChange) {
+      this.el = svg; this.onChange = onChange; this.W = 700; this.H = 590; this.cx = 0; this.cy = 0; this.scale = 25; this.scene = null; this.labels = []; this.drag = null; this.pointers = new Map(); this.placing = false;
+      svg.innerHTML = `<defs><clipPath id="planeClip"><rect id="clipRect" x="0" y="0" width="700" height="590"/></clipPath>${['x','y','axis','blue'].map(k=>`<marker id="arrow-${k}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6" fill="${C[k]}"/></marker>`).join('')}</defs><g id="grid-layer"></g><g id="scene-layer" clip-path="url(#planeClip)"></g>`;
+      this.grid = svg.querySelector('#grid-layer'); this.layer = svg.querySelector('#scene-layer');
+      this.resizeObserver = new ResizeObserver(() => this.resize()); this.resizeObserver.observe(svg.parentElement);
+      svg.addEventListener('pointerdown', e => this.pointerDown(e)); svg.addEventListener('pointermove', e => this.pointerMove(e)); svg.addEventListener('pointerup', e => this.pointerUp(e)); svg.addEventListener('pointercancel', e => this.pointerUp(e, true));
+      svg.addEventListener('wheel', e => { if (e.ctrlKey || e.metaKey) { e.preventDefault(); this.zoom(e.deltaY > 0 ? .9 : 1.1); } }, { passive:false });
+      this.resize();
+    }
+    resize() {
+      const r = this.el.parentElement.getBoundingClientRect(); this.W = Math.max(260, r.width); this.H = Math.max(310, r.height);
+      if (!this.sized) { this.scale = Math.min((this.W - 75) / 20, (this.H - 65) / 20); this.sized = true; }
+      else if (this.prevW) { const oldBase=Math.min((this.prevW-75)/20,(this.prevH-65)/20), newBase=Math.min((this.W-75)/20,(this.H-65)/20); this.scale*=newBase/oldBase; }
+      this.prevW = this.W; this.prevH = this.H;
+      this.el.setAttribute('viewBox', `0 0 ${this.W} ${this.H}`); this.el.querySelector('#clipRect').setAttribute('width', this.W); this.el.querySelector('#clipRect').setAttribute('height', this.H);
+      this.drawGrid(); if (this.scene) this.render(this.scene);
+    }
+    xy(p) { return [this.W / 2 + (n(p[0]) - this.cx) * this.scale, this.H / 2 - (n(p[1]) - this.cy) * this.scale]; }
+    world(x, y) { return [this.cx + (x - this.W / 2) / this.scale, this.cy - (y - this.H / 2) / this.scale]; }
+    bounds(pad = 0) { return [this.cx - this.W / (2 * this.scale) - pad, this.cx + this.W / (2 * this.scale) + pad, this.cy - this.H / (2 * this.scale) - pad, this.cy + this.H / (2 * this.scale) + pad]; }
+    fit(objects, T = null) {
+      let pts = [];
+      for (const o of objects.filter(Boolean)) {
+        if (o.p) pts.push(coord(o.p));
+        if (o.reps) pts.push(...o.reps.map(r => coord(r.p)));
+        if (o.poly) {
+          const cd = M.circleData(o.poly), lc = M.locus(o.poly);
+          if (cd && cd.r2.num >= 0) { const r = Math.sqrt(cd.r2.num); pts.push([cd.h.num-r, cd.k.num-r], [cd.h.num+r, cd.k.num+r]); }
+          else if (lc.type === 'ellipse') {
+            const [a,b,c,,,] = M.coeff(o.poly).map(n), center = lc.center, v = -M.evalN(o.poly,...center), lam = [(a+c+Math.hypot(a-c,b))/2,(a+c-Math.hypot(a-c,b))/2];
+            const rad = Math.sqrt(Math.max(Math.abs(v/lam[0]),Math.abs(v/lam[1]))); if (Number.isFinite(rad)) pts.push([center[0]-rad,center[1]-rad],[center[0]+rad,center[1]+rad]);
+          }
+        }
+      }
+      if (T?.kind === 'axis') { const den = T.A.num**2+T.B.num**2; pts.push([-T.A.num*T.C.num/den,-T.B.num*T.C.num/den]); }
+      if (T?.kind === 'center') pts.push([T.h.num,T.k.num]);
+      pts = pts.filter(p=>p.every(Number.isFinite)); if (!pts.length) pts = [[-5,-5],[5,5]];
+      let xmin=Math.min(...pts.map(p=>p[0])), xmax=Math.max(...pts.map(p=>p[0])), ymin=Math.min(...pts.map(p=>p[1])), ymax=Math.max(...pts.map(p=>p[1]));
+      // Preserve the origin when it is nearby, but not at the expense of legibility.
+      if (Math.max(Math.abs(xmin),Math.abs(xmax),Math.abs(ymin),Math.abs(ymax)) <= 30) { xmin=Math.min(xmin,0); xmax=Math.max(xmax,0); ymin=Math.min(ymin,0); ymax=Math.max(ymax,0); }
+      const minRadius=objects.filter(Boolean).length>1?4:7;const rx=Math.max(minRadius,(xmax-xmin)/2+2), ry=Math.max(minRadius,(ymax-ymin)/2+2);
+      this.cx=(xmin+xmax)/2; this.cy=(ymin+ymax)/2;
+      if (objects.filter(Boolean).length<=1 && xmin>=-7 && xmax<=7 && ymin>=-7 && ymax<=7) { this.cx=0; this.cy=0; this.scale=Math.min((this.W-75)/20,(this.H-65)/20); }
+      else this.scale=Math.max(.000001,Math.min((this.W-100)/(rx*2),(this.H-95)/(ry*2)));
+      this.drawGrid(); if(this.scene)this.render(this.scene);
+    }
+    zoom(k) { this.scale=Math.min(180,Math.max(.000001,this.scale*k)); this.drawGrid(); if(this.scene)this.render(this.scene); }
+    home() { this.cx=0; this.cy=0; this.scale=Math.min((this.W-75)/20,(this.H-65)/20); this.drawGrid(); if(this.scene)this.render(this.scene); }
+    local(e) { const r=this.el.getBoundingClientRect(); return [(e.clientX-r.left)*this.W/r.width,(e.clientY-r.top)*this.H/r.height]; }
+    pointerDown(e) {
+      this.el.setPointerCapture(e.pointerId); const p=this.local(e); this.pointers.set(e.pointerId,p);
+      if (this.pointers.size===1) this.drag={p,cx:this.cx,cy:this.cy,moved:false};
+      if (this.pointers.size===2) { const a=[...this.pointers.values()]; this.pinch={dist:Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1]),scale:this.scale}; this.drag=null; }
+    }
+    pointerMove(e) {
+      if(!this.pointers.has(e.pointerId))return;
+      const p=this.local(e); this.pointers.set(e.pointerId,p);
+      if(this.pointers.size===2 && this.pinch) { const a=[...this.pointers.values()]; this.scale=Math.min(180,Math.max(.000001,this.pinch.scale*Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1])/Math.max(this.pinch.dist,1))); }
+      else if(this.drag && !this.placing) { const dx=p[0]-this.drag.p[0],dy=p[1]-this.drag.p[1]; if(Math.hypot(dx,dy)>4)this.drag.moved=true; this.cx=this.drag.cx-dx/this.scale; this.cy=this.drag.cy+dy/this.scale; }
+      this.drawGrid(); if(this.scene)this.render(this.scene);
+    }
+    pointerUp(e,cancel=false) {
+      if(!cancel && this.placing && this.pointers.size===1 && this.drag) { const p=this.world(...this.local(e)).map(v=>Math.round(v)); this.onChange?.(p); }
+      this.pointers.delete(e.pointerId); this.drag=null; this.pinch=null;
+    }
+    niceStep() { if(this.scale>=12&&this.scale<80)return 1; const desired=22/this.scale, power=10**Math.floor(Math.log10(desired)), f=desired/power; return (f<=1?1:f<=2?2:f<=5?5:10)*power; }
+    drawGrid() {
+      const [xmin,xmax,ymin,ymax]=this.bounds(), step=this.niceStep(), u=this.scale*step, [ox,oy]=this.xy([0,0]); this.step=step;
+      let s=`<rect width="${this.W}" height="${this.H}" fill="#fcfcf9"/>`;
+      if(this.scene?.settings?.chess!==false) {
+        const px=((ox%(2*u))+2*u)%(2*u),py=((oy%(2*u))+2*u)%(2*u);
+        s+=`<defs><pattern id="chess-grid" patternUnits="userSpaceOnUse" x="${px}" y="${py}" width="${2*u}" height="${2*u}"><rect width="${u}" height="${u}" fill="#f0f3f3"/><rect x="${u}" y="${u}" width="${u}" height="${u}" fill="#f0f3f3"/></pattern></defs><rect width="${this.W}" height="${this.H}" fill="url(#chess-grid)"/>`;
+      }
+      const ay=Math.min(this.H-24,Math.max(18,oy)),ax=Math.min(this.W-30,Math.max(25,ox));
+      for(let v=Math.ceil(xmin/step)*step;v<=xmax+step*.01;v+=step) { const x=this.xy([v,0])[0];s+=`<path d="M${x},0 V${this.H}" stroke="#dce3e8" stroke-width=".7"/>`; if(Math.abs(v)>step/100)s+=`<text x="${x}" y="${ay+17}" text-anchor="middle" class="tick">${F(v)}</text>`; }
+      for(let v=Math.ceil(ymin/step)*step;v<=ymax+step*.01;v+=step) { const y=this.xy([0,v])[1];s+=`<path d="M0,${y} H${this.W}" stroke="#dce3e8" stroke-width=".7"/>`;if(Math.abs(v)>step/100)s+=`<text x="${ax-9}" y="${y+4}" text-anchor="end" class="tick">${F(v)}</text>`; }
+      if(oy>=0 && oy<=this.H)s+=`<path d="M10,${oy} H${this.W-17}" stroke="#7991a4" stroke-width="1.5"/><path d="M${this.W-22},${oy-4} l7,4 l-7,4" fill="none" stroke="#7991a4" stroke-width="1.5"/><text x="${this.W-21}" y="${oy-11}" class="axis-title">+x</text>`;
+      if(ox>=0 && ox<=this.W)s+=`<path d="M${ox},${this.H-10} V17" stroke="#7991a4" stroke-width="1.5"/><path d="M${ox-4},22 l4,-7 l4,7" fill="none" stroke="#7991a4" stroke-width="1.5"/><text x="${ox+11}" y="23" class="axis-title">+y</text>`;
+      if(ox>=0 && ox<=this.W && oy>=0 && oy<=this.H)s+=`<text x="${ox-9}" y="${oy+17}" text-anchor="end" class="tick">0</text>`;
+      this.grid.innerHTML=s;
+      const badge=document.querySelector('#grid-unit');if(badge)badge.textContent=`한 칸 ${F(step)}단위 · 가로·세로 같은 비율`;
+    }
+    line(a,b,color,width=2,dash='',arrow=false) { const p=this.xy(a),r=this.xy(b);return `<path d="M${p[0]},${p[1]} L${r[0]},${r[1]}" fill="none" stroke="${C[color]||color}" stroke-width="${width}" ${dash?`stroke-dasharray="${dash}"`:''} ${arrow?`marker-end="url(#arrow-${color})"`:''}/>`; }
+    infiniteLine(point,dir,stroke,width=2.6,dash='') { const l=Math.hypot(...dir);if(!l)return '';const R=(this.W+this.H)/this.scale*4; return this.line([point[0]-dir[0]/l*R,point[1]-dir[1]/l*R],[point[0]+dir[0]/l*R,point[1]+dir[1]/l*R],stroke,width,dash); }
+    curve(poly,color,width=3,opacity=1,delta=[0,0],dash='') {
+      let [a,b,c,d,e,f]=M.coeff(poly).map(n); const [dx,dy]=delta;
+      [d,e,f]=[d-2*a*dx-b*dy,e-b*dx-2*c*dy,f+a*dx*dx+b*dx*dy+c*dy*dy-d*dx-e*dy];
+      let result='';const norm=Math.max(Math.abs(a),Math.abs(b),Math.abs(c),Math.abs(d),Math.abs(e),Math.abs(f),1);[a,b,c,d,e,f]=[a,b,c,d,e,f].map(v=>v/norm);const eps=1e-11;
+      const style=`fill="none" stroke="${C[color]||color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" ${dash?`stroke-dasharray="${dash}"`:''}`;
+      if(Math.abs(a)+Math.abs(b)+Math.abs(c)<eps) { const den=d*d+e*e; if(den>0)result=this.infiniteLine([-d*f/den,-e*f/den],[-e,d],color,width,dash); }
+      else {
+        const theta=.5*Math.atan2(b,a-c),u=[Math.cos(theta),Math.sin(theta)],v=[-Math.sin(theta),Math.cos(theta)],rad=Math.hypot(a-c,b),l1=(a+c+rad)/2,l2=(a+c-rad)/2,det=a*c-b*b/4;
+        if(Math.abs(det)>eps) {
+          const center=[(-c*d+b*e/2)/(2*det),(b*d/2-a*e)/(2*det)],k=-(a*center[0]**2+b*center[0]*center[1]+c*center[1]**2+d*center[0]+e*center[1]+f),pc=this.xy(center);
+          if(det>0 && k/l1>=-eps && k/l2>=-eps) {
+            const rx=Math.sqrt(Math.max(0,k/l1))*this.scale,ry=Math.sqrt(Math.max(0,k/l2))*this.scale;
+            result=rx<.2&&ry<.2?`<circle cx="${pc[0]}" cy="${pc[1]}" r="4" fill="${C[color]||color}"/>`:`<ellipse cx="${pc[0]}" cy="${pc[1]}" rx="${rx}" ry="${ry}" transform="rotate(${-theta*180/Math.PI} ${pc[0]} ${pc[1]})" ${style}/>`;
+          } else if(det<0) {
+            if(Math.abs(k)<eps) {
+              const t=Math.sqrt(Math.abs(l1/l2)); for(const sign of [-1,1])result+=this.infiniteLine(center,[u[0]+sign*t*v[0],u[1]+sign*t*v[1]],color,width,dash);
+            } else {
+              const main=k/l1>0?u:v,other=k/l1>0?v:u,aa=Math.sqrt(Math.abs(k/(k/l1>0?l1:l2))),bb=Math.sqrt(Math.abs(k/(k/l1>0?l2:l1)));
+              const R=Math.hypot(this.cx-center[0],this.cy-center[1])+(this.W+this.H)/this.scale*2,T=Math.min(25,Math.asinh(R/Math.max(bb,1e-8))+1);
+              for(const sign of [-1,1]) { let path=''; for(let i=0;i<=350;i++){const t=-T+2*T*i/350,X=sign*aa*Math.cosh(t),Y=bb*Math.sinh(t),p=this.xy([center[0]+main[0]*X+other[0]*Y,center[1]+main[1]*X+other[1]*Y]);path+=`${i?'L':'M'}${p[0].toFixed(2)},${p[1].toFixed(2)} `;}result+=`<path d="${path}" ${style}/>`; }
+            }
+          }
+        } else {
+          const U=Math.abs(l1)>=Math.abs(l2)?u:v,V=[-U[1],U[0]],lam=Math.abs(l1)>=Math.abs(l2)?l1:l2,du=d*U[0]+e*U[1],dv=d*V[0]+e*V[1];
+          if(Math.abs(dv)>eps) {
+            const box=this.bounds(10+Math.abs(dx)+Math.abs(dy)),us=[[box[0],box[2]],[box[0],box[3]],[box[1],box[2]],[box[1],box[3]]].map(p=>p[0]*U[0]+p[1]*U[1]);const lo=Math.min(...us),hi=Math.max(...us);let path='';
+            for(let i=0;i<=420;i++){const uu=lo+(hi-lo)*i/420,vv=-(lam*uu*uu+du*uu+f)/dv,p=this.xy([U[0]*uu+V[0]*vv,U[1]*uu+V[1]*vv]);path+=`${i?'L':'M'}${p[0].toFixed(2)},${p[1].toFixed(2)} `;} result=`<path d="${path}" ${style}/>`;
+          } else for(const r of M.roots(lam,du,f))result+=this.infiniteLine([U[0]*r,U[1]*r],V,color,width,dash);
+        }
+      }
+      return `<g opacity="${opacity}">${result}</g>`;
+    }
+    bubble(point,text,color='ink',dx=14,dy=-38,small=false) {
+      let [x,y]=this.xy(point);const anchor=[x,y];const font=small?11:13,measure=t=>[...t].reduce((s,c)=>s+(/[\u1100-\uFFFF]/.test(c)?font:font*.58),0);
+      const words=String(text).split(' '),lines=[];let line='';for(const w of words){if(measure(line+' '+w)>Math.min(285,this.W-40)&&line){lines.push(line);line=w;}else line+=(line?' ':'')+w;}if(line)lines.push(line);
+      const ww=Math.max(...lines.map(measure),12)+18,hh=lines.length*(font+5)+12; x=Math.max(7,Math.min(this.W-ww-7,x+dx)); y=Math.max(7,Math.min(this.H-hh-7,y+dy));
+      const collides=(X,Y)=>this.labels.some(r=>X<r.x+r.w+3&&X+ww>r.x-3&&Y<r.y+r.h+3&&Y+hh>r.y-3);
+      for(const shift of [0,hh+8,-hh-8,2*(hh+8),-2*(hh+8)]){const yy=Math.max(7,Math.min(this.H-hh-7,y+shift));if(!collides(x,yy)){y=yy;break;}}
+      this.labels.push({x,y,w:ww,h:hh});
+      const near=[Math.max(x,Math.min(x+ww,anchor[0])),Math.max(y,Math.min(y+hh,anchor[1]))],leader=Math.hypot(near[0]-anchor[0],near[1]-anchor[1])>8?`<path d="M${anchor[0]},${anchor[1]} L${near[0]},${near[1]}" fill="none" stroke="${C[color]||color}" stroke-width="1" opacity=".3"/>`:''; return `<g class="graph-label"><title>${esc(text)}</title>${leader}<rect x="${x}" y="${y}" width="${ww}" height="${hh}" rx="8" fill="#fff" fill-opacity=".96" stroke="${C[color]||color}" stroke-opacity=".24"/><text fill="${C[color]||color}" font-size="${font}" font-weight="650">${lines.map((t,i)=>`<tspan x="${x+9}" y="${y+font+6+i*(font+5)}">${esc(t)}</tspan>`).join('')}</text></g>`;
+    }
+    dot(p,color='blue',r=5,pawn=false,pulse=false) { const [x,y]=this.xy(p); return `<g ${pulse?'class="finish-pulse"':''}>${pulse?`<circle cx="${x}" cy="${y}" r="14" fill="none" stroke="${C[color]||color}" stroke-width="2" opacity=".4"/>`:''}${pawn?`<g transform="translate(${x},${y})"><path d="M-10,-8 Q-10,-12 -5,-14 L-4,-22 Q-7,-24 -7,-28 A7,7 0 1,1 7,-28 Q7,-24 4,-22 L5,-14 Q10,-12 10,-8 Z" fill="${C[color]||color}" stroke="white" stroke-width="1.7"/><path d="M-11,-7 H11" stroke="${C[color]||color}" stroke-width="3" stroke-linecap="round"/></g>`:''}<circle cx="${x}" cy="${y}" r="${r}" fill="${C[color]||color}" stroke="white" stroke-width="2"/></g>`; }
+    pointText(p,approx=false){return `(${p.map(v=>approx?F(n(v)):M.fmt(v)).join(', ')})${approx?' ≈':''}`;}
+    render(scene) {
+      this.scene=scene; this.labels=[]; const {before,after,T,phase,dx=0,dy=0,t=0,settings={}}=scene, shape=!!before.poly,done=phase==='result',hasMotion=!!after,translation=T?.kind==='translation';
+      const reps=shape?before.reps:[{p:before.p,label:'P',approx:false}],shown=settings.reps?reps:reps.slice(0,1),main=shown[0]||{p:[M.Z,M.Z],label:'P'},p0=coord(main.p),pf=hasMotion?coord(M.point(T,main.p)):p0;
+      let s='',labels='';
+      if(shape) {
+        if(hasMotion&&settings.original!==false)s+=this.curve(before.poly,'old',2,.7,[0,0],'6 5');
+        if(!hasMotion)s+=this.curve(before.poly,'blue',3.2);
+        else if(translation)s+=this.curve(before.poly,'blue',3.2,1,[dx,dy]);
+        else { if(!done)s+=this.curve(before.poly,'blue',2.5,Math.max(.25,1-t*.65)); if(phase==='mirror'||done)s+=this.curve(after.poly,'blue',3.2,done?1:Math.max(.15,t)); }
+      }
+      if(T && !translation) {
+        if(T.kind==='axis') {
+          const den=T.A.num**2+T.B.num**2,axisPoint=[-T.A.num*T.C.num/den,-T.B.num*T.C.num/den];
+          s+=`<g ${phase==='axis'&&!settings.reduced?`opacity="${.72+.28*Math.cos(4*Math.PI*(scene.phaseProgress||0))}"`:''}>${this.infiniteLine(axisPoint,[-T.B.num,T.A.num],'axis',3.3,'10 7')}</g>`;
+          // Label near the visible part of the axis rather than a possibly remote intercept.
+          const ratio=(T.A.num*this.cx+T.B.num*this.cy+T.C.num)/den,ap=[this.cx-T.A.num*ratio,this.cy-T.B.num*ratio];
+          labels+=this.bubble(ap,`대칭축 ${T.label}`,'axis',14,-80,true);
+        } else { s+=`<g opacity="${(phase==='axis'&&!settings.reduced)?(.72+.28*Math.cos(4*Math.PI*(scene.phaseProgress||0))):1}">${this.dot([T.h,T.k],'axis',7)}</g>`;labels+=this.bubble([T.h,T.k],`대칭 중심 ${this.pointText([T.h,T.k])}`,'axis',12,18,true); }
+      }
+      if(hasMotion && settings.trail!==false) {
+        if(translation) {
+          const mid=[p0[0]+dx,p0[1]],curr=[p0[0]+dx,p0[1]+dy];
+          if(Math.abs(dx)>1e-8){s+=this.line(p0,mid,'x',3,'',true);labels+=this.bubble([(p0[0]+mid[0])/2,p0[1]],`가로 ${M.signNum(done?T.a:M.q(Number(dx.toFixed(6))))}`,'x',-38,24,true);}
+          if(Math.abs(dy)>1e-8){s+=this.line(mid,curr,'y',3,'',true);labels+=this.bubble([mid[0],(mid[1]+curr[1])/2],`세로 ${M.signNum(done?T.b:M.q(Number(dy.toFixed(6))))}`,'y',16,6,true);}
+          // Cumulative signed displacement is separate from coordinate labels.
+          for(const axis of [0,1]) { const dist=axis===0?dx:dy,base=axis===0?p0:[p0[0]+T.a.num,p0[1]],max=Math.floor(Math.abs(dist)+1e-8),stride=Math.max(1,Math.ceil(max/12));if(this.scale*stride<17)continue;
+            for(let j=stride;j<=max;j+=stride){const val=Math.sign(dist)*j,pt=axis===0?[base[0]+val,base[1]]:[base[0],base[1]+val],pp=this.xy(pt);s+=`<circle cx="${pp[0]}" cy="${pp[1]}" r="2.5" fill="${C[axis===0?'x':'y']}"/><text x="${pp[0]+(axis===1?-12:0)}" y="${pp[1]+(axis===0?17:4)}" text-anchor="middle" font-size="10" font-weight="750" fill="${C[axis===0?'x':'y']}" stroke="white" stroke-width="3" paint-order="stroke">${val>0?'+':''}${val}</text>`;}
+          }
+          if(phase==='xdir'&&!T.a.zero)s+=this.line(p0,[p0[0]+Math.sign(T.a.num)*Math.min(Math.abs(T.a.num),2),p0[1]],'x',3,'5 4',true);
+          if(phase==='ydir'&&!T.b.zero)s+=this.line([p0[0]+T.a.num,p0[1]],[p0[0]+T.a.num,p0[1]+Math.sign(T.b.num)*Math.min(Math.abs(T.b.num),2)],'y',3,'5 4',true);
+          if(scene.direct && (Math.abs(dx)+Math.abs(dy)>0))s+=this.line(p0,curr,'blue',1.6,'5 5',true);
+        } else if(['guide','mirror','result'].includes(phase)) {
+          for(const r of shown){const P=coord(r.p),P2=coord(M.point(T,r.p)),H=coord(M.foot(T,r.p));s+=this.line(P,P2,'axis',1.8,'5 4');s+=this.dot(H,'axis',3);
+            if(r===main){const dist=Math.hypot(P[0]-H[0],P[1]-H[1]);const exactD=T.kind==='axis'?distanceLabel(T,r.p):distanceCenter(T,r.p);labels+=this.bubble([(P[0]+H[0])/2,(P[1]+H[1])/2],`거리 ${exactD}`,'axis',10,18,true);if(phase==='mirror'||done)labels+=this.bubble([(P2[0]+H[0])/2,(P2[1]+H[1])/2],`거리 ${exactD}`,'axis',10,18,true);
+              if(T.kind==='axis'&&dist>1e-8){const nn=[(P[0]-H[0])/dist,(P[1]-H[1])/dist],dd=[-nn[1],nn[0]],u=10/this.scale,aa=[H[0]+nn[0]*u,H[1]+nn[1]*u],bb=[aa[0]+dd[0]*u,aa[1]+dd[1]*u],cc=[H[0]+dd[0]*u,H[1]+dd[1]*u];s+=this.line(aa,bb,'axis',1.2)+this.line(bb,cc,'axis',1.2);labels+=this.bubble(H,`H ${this.pointText(M.foot(T,r.p),r.approx)}`,'axis',12,22,true);}
+            }
+          }
+        }
+      }
+      for(const r of shown) {
+        const P=coord(r.p),target=hasMotion?M.point(T,r.p):r.p,PN=coord(target);let cur=P;
+        if(hasMotion)cur=translation?[P[0]+dx,P[1]+dy]:[P[0]+(PN[0]-P[0])*t,P[1]+(PN[1]-P[1])*t];
+        if(done)cur=PN;
+        if(hasMotion&&settings.original!==false){s+=this.dot(P,'old',4);if(r===main)labels+=this.bubble(P,`${r.label} ${this.pointText(r.p,r.approx)} · 출발`,'old',-90,-54,true);}
+        s+=this.dot(cur,'blue',shape?5:6,!shape,done&&!settings.reduced);
+        if(r===main||settings.reps){let exact=done?target:(!hasMotion?r.p:null); if(hasMotion&&!done&&translation&&scene.phaseProgress===1){const dq=Math.abs(dx-T.a.num)<1e-9?T.a:M.q(Number(dx.toFixed(7))),eq=Math.abs(dy-T.b.num)<1e-9?T.b:M.q(Number(dy.toFixed(7)));exact=[r.p[0].add(dq),r.p[1].add(eq)];}if(hasMotion&&!translation&&t===0)exact=r.p;if(hasMotion&&!translation&&t===1)exact=target;const name=done?`${r.label}′`:(hasMotion?'현재':r.label);const text=exact?this.pointText(exact,r.approx):`≈ (${F(cur[0])}, ${F(cur[1])})`;labels+=this.bubble(cur,`${name} ${text}`,'blue',14,-45,!(!shape));}
+      }
+      if(shape) {
+        const anchor=done&&after?.reps?.length?after.reps[0].p:main.p;
+        const p=done?after.poly:before.poly;
+        if(done||!hasMotion)labels+=this.bubble(anchor,`${done?'이동 후':'현재 도형'}  ${M.equation(p)}`,'ink',-90,55);
+      }
+      this.layer.innerHTML=s+labels;
+    }
+  }
+  function distanceLabel(T,p) { const numerator=T.A.mul(p[0]).add(T.B.mul(p[1])).add(T.C), den=T.A.mul(T.A).add(T.B.mul(T.B)), d2=numerator.mul(numerator).div(den), r=Math.sqrt(d2.num); return Math.abs(r-Math.round(r))<1e-10?String(Math.round(r)):`≈ ${F(r)}`; }
+  function distanceCenter(T,p){const dx=M.q(p[0]).sub(T.h),dy=M.q(p[1]).sub(T.k),d=Math.hypot(dx.num,dy.num);return Math.abs(d-Math.round(d))<1e-10?String(Math.round(d)):`≈ ${F(d)}`;}
+  root.MoveGraph={Plane,esc,distanceLabel,distanceCenter};
+})(window);
+</script>
+  <script>/* Move Lab — application state and deterministic, pauseable animations. */
+(function () {
+  'use strict';
+  const M=window.MoveMath,G=window.MoveGraph,$=id=>document.getElementById(id),esc=G.esc;
+  const MODES={
+    'point-translation':{name:'점의 평행이동',shape:false,translation:true,board:'한 칸씩 움직이는 좌표'},
+    'point-reflection':{name:'점의 대칭',shape:false,translation:false,board:'거울의 반대편, 같은 거리'},
+    'shape-translation':{name:'도형의 평행이동',shape:true,translation:true,board:'점의 이동이 도형의 식으로'},
+    'shape-reflection':{name:'도형의 대칭이동',shape:true,translation:false,board:'대응점을 따라 만나는 거울 속 도형'}
+  };
+  const STORE='move-lab-v1';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'{}');}catch{return {};}};
+  const stored=load();
+  function makePoint(x,y){return {p:[M.q(x),M.q(y)]};}
+  function makeShape(text){const poly=M.parseEquation(text);M.validateShape(poly);return {poly,reps:M.representatives(poly),input:text};}
+  const initialPoint=makePoint(-2,3),initialShape=makeShape('(x-1)^2+(y-2)^2=4');
+  const state={mode:'point-translation',learning:'guided',families:{point:{initial:initialPoint,current:initialPoint,history:[],last:null},shape:{initial:initialShape,current:initialShape,history:[],last:null}},settings:{original:true,trail:true,reps:false,chess:true,reduced:window.matchMedia('(prefers-reduced-motion: reduce)').matches,...(stored.settings||{})},badges:stored.badges&&typeof stored.badges==='object'?stored.badges:{},anim:null,completed:null,sourceDirty:false,placing:false,challenge:null,exampleIndex:0,updating:false,toastTimer:null};
+  let raf=0;
+  const mode=()=>MODES[state.mode],family=()=>state.families[mode().shape?'shape':'point'];
+  const coord=p=>`(${p.map(M.fmt).join(', ')})`;
+  const numberDesc=v=>M.fmt(v),sign=v=>M.signNum(v);
+  const validSettingKeys=['original','trail','reps','chess','reduced'];for(const key of validSettingKeys)state.settings[key]=!!state.settings[key];
+  const plane=new G.Plane($('coordinate-plane'),p=>{if(state.learning==='challenge'||state.anim?.playing)return;if(p.some(v=>Math.abs(v)>100)){toast('좌표판에 놓을 수 있는 출발점은 −100~100 범위예요.');return;}$('point-x').value=p[0];$('point-y').value=p[1];applySource();});
+  function save(){try{localStorage.setItem(STORE,JSON.stringify({settings:state.settings,badges:state.badges}));}catch{/* Private browsing may disable storage. Core learning remains available. */}}
+  function toast(text){clearTimeout(state.toastTimer);$('toast').textContent=text;$('toast').hidden=false;state.toastTimer=setTimeout(()=>$('toast').hidden=true,3400);}
+  function showError(id,error){$(id).textContent=error instanceof Error?error.message:String(error);$(id).hidden=false;}
+  function clearErrors(){for(const id of ['source-error','transform-error']){$(id).textContent='';$(id).hidden=true;}}
+  function stopAnimation(){cancelAnimationFrame(raf);raf=0;if(state.anim)state.anim.playing=false;}
+  function cancelPreview(){if(state.anim){stopAnimation();state.anim=null;}state.completed=null;}
+  function getTransform(){
+    if(mode().translation){const a=M.parseNumber($('move-x').value),b=M.parseNumber($('move-y').value),T=M.translation(a,b);T.label=`가로 ${sign(a)}, 세로 ${sign(b)}`;return T;}
+    const type=$('axis-select').value;let T;
+    if(type==='xaxis'){T=M.reflection(0,1,0);T.label='y = 0 (x축)';}
+    else if(type==='yaxis'){T=M.reflection(1,0,0);T.label='x = 0 (y축)';}
+    else if(type==='origin'){T=M.central(0,0);T.label='원점 (0, 0)';}
+    else if(type==='diagonal'){T=M.reflection(1,-1,0);T.label='y = x';}
+    else if(type==='antidiagonal'){T=M.reflection(1,1,0);T.label='y = −x';}
+    else if(type==='vertical'){const h=M.parseNumber($('axis-h').value);T=M.reflection(1,0,h.neg());T.label=`x = ${M.fmt(h)}`;}
+    else if(type==='horizontal'){const k=M.parseNumber($('axis-k').value);T=M.reflection(0,1,k.neg());T.label=`y = ${M.fmt(k)}`;}
+    else if(type==='center'){const h=M.parseNumber($('axis-h').value),k=M.parseNumber($('axis-k').value);T=M.central(h,k);T.label=`점 ${coord([h,k])}`;}
+    else if(type==='general'){T=M.axisFrom($('axis-equation').value);T.label=M.equation(M.parseEquation($('axis-equation').value));}
+    T.choice=type;return T;
+  }
+  function transformed(source,T){if(source.p)return {p:M.point(T,source.p)};const poly=M.shape(T,source.poly);M.validateShape(poly);return {poly,reps:source.reps.map(r=>({...r,p:M.point(T,r.p)})),input:M.equation(poly,false)};}
+  function syncSource(){state.updating=true;const current=family().current;if(mode().shape){$('shape-equation').value=M.equation(current.poly,false);$('equation-preview').textContent=M.equation(current.poly);}else{$('point-x').value=current.p[0].toString();$('point-y').value=current.p[1].toString();}state.sourceDirty=false;$('source-dirty').hidden=true;state.updating=false;updateCurrent();}
+  function updateCurrent(){const f=family(),cur=f.current;$('current-source-value').textContent=cur.p?'P'+coord(cur.p):M.equation(cur.poly);$('current-sequence').textContent=f.history.length?`${f.history.length}회 이동 후`:'처음 위치';}
+  function setSource(source,quiet=false){cancelPreview();const f=family();f.initial=source;f.current=source;f.history=[];f.last=null;clearErrors();syncSource();updateHistory();plane.fit([source]);ready();if(!quiet)toast(mode().shape?'새 도형을 출발 도형으로 적용했어요.':'새 점을 출발점으로 적용했어요.');}
+  function applySource(){try{const source=mode().shape?makeShape($('shape-equation').value):makePoint(M.parseNumber($('point-x').value),M.parseNumber($('point-y').value));setSource(source);}catch(e){showError('source-error',e);updateControls();}}
+  function onSourceInput(){if(state.updating)return;cancelPreview();state.sourceDirty=true;$('source-dirty').hidden=false;clearErrors();if(mode().shape){try{$('equation-preview').textContent=M.equation(M.parseEquation($('shape-equation').value));}catch{$('equation-preview').textContent='식 입력 후 [새 도형 적용]을 눌러 확인하세요.';}}ready();}
+  function updateDirections(){for(const axis of ['x','y']){try{const v=M.parseNumber($(`move-${axis}`).value),dir=v.num>0?(axis==='x'?'오른쪽 +':'위쪽 +'):v.num<0?(axis==='x'?'왼쪽 −':'아래쪽 −'):'변화 없음';$(`${axis}-direction`).textContent=dir;document.querySelectorAll(`[data-direction^="${axis}:"]`).forEach(el=>el.classList.toggle('chosen',+el.dataset.direction.split(':')[1]===Math.sign(v.num)));}catch{$(`${axis}-direction`).textContent='값 확인';}}}
+  function updateAxisUI(){const type=$('axis-select').value;$('axis-params').hidden=!['vertical','horizontal','center'].includes(type);$('axis-h-label').hidden=type==='horizontal';$('axis-k-label').hidden=type==='vertical';$('general-axis-input').hidden=type!=='general';document.querySelectorAll('[data-axis]').forEach(el=>el.classList.toggle('chosen',el.dataset.axis===type));$('axis-note').innerHTML=['origin','center'].includes(type)?'점 대칭에는 대칭축이 없어요.<br>중심이 두 점의 중점이 되는지 확인해요.':'굵은 점선이 거울의 기준이에요.<br>축에 수직으로 잰 거리를 비교해요.';}
+  function onTransformInput(){if(state.updating)return;cancelPreview();clearErrors();updateDirections();updateAxisUI();ready();}
+  function settingsToUI(){const map={'show-original':'original','show-trail':'trail','show-reps':'reps','chess-pattern':'chess','reduce-motion':'reduced'};for(const [id,key] of Object.entries(map))$(id).checked=state.settings[key];document.body.classList.toggle('reduced',state.settings.reduced);}
+  function updateControls(){
+    const a=state.anim,running=!!a?.playing,active=!!a,f=family(),locked=state.learning==='challenge';
+    $('source-fields').disabled=running||locked;$('transform-fields').disabled=running||locked;
+    $('run').disabled=state.sourceDirty||running;
+    $('run-label').textContent=running?'이동 중…':active?(state.settings.reduced?'다음 단계':'계속 재생'):state.settings.reduced?(f.history.length?'여기서 단계별 이동':'단계별로 시작'):f.history.length?'여기서 이어 이동':'이동 시작';
+    $('pause').disabled=!active;$('pause').textContent=running||!active?'Ⅱ 일시정지':'▶ 계속';if(state.settings.reduced)$('pause').disabled=true;
+    $('step').disabled=running||state.sourceDirty;
+    $('replay').disabled=!f.last||active||state.sourceDirty;$('undo').disabled=!f.history.length&&!active;
+    $('load-example').disabled=running;$('next-challenge').disabled=running;$('place-point').disabled=running||locked;
+    $('export-history').disabled=!f.history.length;
+    $('copy-result').hidden=!state.completed;
+    $('source-dirty').hidden=!state.sourceDirty;
+    document.body.classList.toggle('teaching',state.learning==='guided');
+  }
+  function ready(){
+    let T=null;try{T=getTransform();}catch{}
+    const before=family().current,scene={before,T,phase:'ready',settings:state.settings};
+    plane.render(scene);plane.drawGrid();
+    $('playback-progress').style.width='0%';$('step-badge').textContent='READY';$('stage-title').textContent=state.sourceDirty?'새 출발 위치를 적용해요':mode().shape?'도형과 대표점을 살펴봐요':'출발점을 확인해요';
+    const name=before.p?'P'+coord(before.p):M.equation(before.poly);
+    $('stage-description').textContent=state.sourceDirty?'입력한 값은 아직 좌표판에 반영되지 않았어요. 출발점 또는 새 도형을 적용한 뒤 이동해 보세요.':T?(mode().translation?`${name}에서 출발해요. 가로 ${sign(T.a)}, 세로 ${sign(T.b)}만큼 이동하면 어떻게 될까요?`:`${name}을 ${T.label}에 대하여 대칭이동해 볼까요?`):'이동 조건을 입력한 뒤 시작하세요.';
+    $('coach-tip').innerHTML=mode().translation?'오른쪽·위쪽은 +<br>왼쪽·아래쪽은 −':T?.kind==='center'?'대칭 중심은 두 대응점의 중점이에요.':'대칭축까지의 거리는<br>축에 수직으로 재어야 해요.';
+    updateChecklist('ready');renderCalculation(before,T,null,'ready');clearResult();updateControls();
+  }
+  function clearResult(){$('result-value').textContent='어디에 도착할까요?';$('result-value').classList.remove('ready');$('result-description').textContent='움직임이 끝나면 좌표와 식을 함께 확인해요.';$('result-card').classList.remove('just-finished');$('result-icon').textContent='◎';$('copy-result').hidden=true;}
+  function updateChecklist(phase){const phases=mode().translation?[['출발',['ready','start']],['가로',['xdir','xmove','xzero']],['세로',['ydir','ymove','yzero','direct']],['도착',['result']]]:[['기준',['ready','start','axis']],['거리',['guide']],['대응',['mirror']],['결과',['result']]];const idx=phases.findIndex(([,ids])=>ids.includes(phase));$('stage-checklist').innerHTML=phases.map(([name],i)=>`<span class="${i===idx?'active':i<idx?'finished':''}">${i<idx?'✓ ':''}${name}</span>`).join('');}
+  function affineText(row,c){let terms=[];for(let i=0;i<2;i++){const v=row[i];if(v.zero)continue;const neg=v.num<0,abs=neg?v.neg():v;terms.push({neg,s:`${abs.eq(1)?'':M.fmt(abs)}${i===0?'x':'y'}`});}if(!c.zero)terms.push({neg:c.num<0,s:M.fmt(c.num<0?c.neg():c)});return terms.map((t,i)=>`${i?(t.neg?' − ':' + '):(t.neg?'−':'')}${t.s}`).join('')||'0';}
+  function renderCalculation(before,T,after,phase,scene=null){
+    const r=before.p?{p:before.p,label:'P'}:before.reps[0];if(!r||!T){$('coordinate-calculation').innerHTML='<p class="calc-note">이동 조건을 입력하면 좌표의 변화를 확인할 수 있어요.</p>';return;}
+    const p=r.p,p2=after?(after.p||after.reps[0]?.p):null,isReady=phase==='ready',done=phase==='result';
+    if(T.kind==='translation'){
+      const partial=(i,delta,full)=>scene?.phaseProgress===1?M.fmt(p[i].add(Math.abs(delta-full.num)<1e-9?full:M.q(Number(delta.toFixed(7))))):`≈ ${Number((p[i].num+delta).toFixed(3))}`; const xv=done||['ydir','ymove','yzero'].includes(phase)?M.fmt(p[0].add(T.a)):phase==='xmove'?partial(0,scene?.dx||0,T.a):phase==='xzero'?M.fmt(p[0]):'?',yv=done?M.fmt(p[1].add(T.b)):phase==='ymove'?partial(1,scene?.dy||0,T.b):phase==='yzero'?M.fmt(p[1]):'?';
+      const row=(i,v,val)=>`<div class="calc-row ${i?'y':''}"><span class="axis-letter">${i?'y':'x'}′</span><span>${isReady?`${i?'y':'x'} + ${i?'b':'a'}`:`${M.fmt(p[i])} + (${sign(v)}) = <strong>${val}</strong>`}</span></div>`;
+      $('coordinate-calculation').innerHTML=(before.poly?`<p class="calc-note">${r.label==='C'?'원의 중심 C':`대표점 ${r.label}`} ${esc(coord(p))}</p>`:'')+row(0,T.a,xv)+row(1,T.b,yv);
+      const x=affineText(T.inv.m[0],T.inv.t[0]),y=affineText(T.inv.m[1],T.inv.t[1]);
+      $('formula-explanation').innerHTML=`<p>점의 좌표에는 이동량을 <b>더해요</b>.</p><div class="math-block">(x, y) → (x+a, y+b)</div><p>도형의 식은 새 좌표에서 이동량을 <b>빼서</b> 원래 좌표를 찾아요.</p><div class="math-block">원래 식: F(x, y) = 0<br>이동 후: F(${esc(x)}, ${esc(y)}) = 0</div>${before.poly?`<p>원래 방정식<br>${esc(M.equation(before.poly))}</p><p><b>x 자리에 ${esc(x)}, y 자리에 ${esc(y)}</b>를 동시에 넣어요.</p>${done?`<div class="math-block">${esc(M.equation(after.poly))}</div>`:''}`:'<p>가로·세로 이동량은 부호가 있지만, 이동한 거리 자체는 음수가 아니에요.</p>'}`;
+    }else{
+      const x=affineText(T.m[0],T.t[0]),y=affineText(T.m[1],T.t[1]);
+      $('coordinate-calculation').innerHTML=(before.poly?`<p class="calc-note">${r.label==='C'?'원의 중심 C':`대표점 ${r.label}`} ${esc(coord(p))}</p>`:'')+`<div class="calc-row"><span class="axis-letter">x′</span><span>${esc(x)}${done&&p2?` = <strong>${M.fmt(p2[0])}</strong>`:''}</span></div><div class="calc-row y"><span class="axis-letter">y′</span><span>${esc(y)}${done&&p2?` = <strong>${M.fmt(p2[1])}</strong>`:''}</span></div>`;
+      $('formula-explanation').innerHTML=`<p>${T.kind==='center'?'대칭 중심은 두 대응점을 이은 선분의 중점이에요.':'대칭축은 두 대응점을 이은 선분을 수직으로 이등분해요.'}</p><div class="math-block">(x, y) → (${esc(x)}, ${esc(y)})</div><p>같은 대칭을 두 번 하면 원래 위치로 돌아와요. 그래서 식에도 같은 대응식을 동시에 대입해요.</p><div class="math-block">F(${esc(x)}, ${esc(y)}) = 0</div>${done&&before.poly?`<p>대입한 뒤 정리하면</p><div class="math-block">${esc(M.equation(after.poly))}</div>`:''}`;
+    }
+  }
+  function makeSteps(T,direct){
+    const steps=[];const push=(phase,duration,from=[0,0],to=from,extra={})=>steps.push({phase,duration,from,to,...extra});push('start',650);
+    if(T.kind==='translation'){
+      const a=T.a.num,b=T.b.num;
+      if(direct&&(a||b)){push('direct',Math.min(4600,1300+Math.hypot(a,b)*150),[0,0],[a,b]);}
+      else{
+        if(a){push('xdir',650);const step=Math.max(1,Math.ceil(Math.abs(a)/18));for(let z=0;z<Math.abs(a)-1e-10;z+=step){const end=Math.min(z+step,Math.abs(a));push('xmove',500,[Math.sign(a)*z,0],[Math.sign(a)*end,0],{chunk:step});}}
+        else push('xzero',600);
+        if(b){push('ydir',650,[a,0]);const step=Math.max(1,Math.ceil(Math.abs(b)/18));for(let z=0;z<Math.abs(b)-1e-10;z+=step){const end=Math.min(z+step,Math.abs(b));push('ymove',500,[a,Math.sign(b)*z],[a,Math.sign(b)*end],{chunk:step});}}
+        else push('yzero',600,[a,0]);
+      }
+      push('result',0,[a,b]);
+    }else{push('axis',2000);push('guide',1300);push('mirror',1900);push('result',0);}
+    return steps;
+  }
+  function prepare(replay=false){
+    clearErrors();if(state.sourceDirty){showError('source-error','새 출발 위치를 먼저 적용해 주세요.');return null;}
+    try{
+      const f=family();if(f.history.length>=100&&!replay)throw new Error('한 실험에서는 100회까지 기록해요. 기록을 저장한 뒤 처음으로 돌아가거나 새 실험을 시작해 주세요.');
+      const saved=replay?f.last:null,T=saved?saved.T:getTransform(); let before=saved?saved.before:f.current;
+      // A fixed center/vertex is not enough to explain a reflected figure. Prefer
+      // a genuinely moving representative when the usual first point is fixed.
+      if(!saved&&before.poly&&before.reps.length){let selected=before.reps.find(r=>r.label==='C')||before.reps.find(r=>r.label==='V')||before.reps[0];if(T.kind!=='translation'&&selected.p.every((v,i)=>v.eq(M.point(T,selected.p)[i]))){selected=before.reps.find(r=>r.p.some((v,i)=>!v.eq(M.point(T,r.p)[i])))||selected;}before={...before,reps:[selected,...before.reps.filter(r=>r!==selected)]};}
+      const after=saved?saved.after:transformed(before,T),direct=saved?saved.direct:$('path-mode').value==='direct';
+      const steps=makeSteps(T,direct),a={before,after,T,direct,steps,index:0,elapsed:0,playing:false,previous:0,replay,lessonDone:false};state.anim=a;state.completed=null;clearResult();plane.fit([before,after],T);plane.placing=false;state.placing=false;$('place-point').classList.remove('chosen');$('place-point').setAttribute('aria-pressed','false');$('placement-banner').hidden=true;$('coordinate-plane').classList.remove('placing');renderAnimation();updateControls();return a;
+    }catch(e){showError('transform-error',e);return null;}
+  }
+  function currentScene(){const a=state.anim;if(!a)return null;const s=a.steps[a.index],p=s.duration?Math.min(1,a.elapsed/s.duration):1,eased=p*p*(3-2*p),dx=s.from[0]+(s.to[0]-s.from[0])*eased,dy=s.from[1]+(s.to[1]-s.from[1])*eased;return {before:a.before,after:a.after,T:a.T,phase:s.phase,phaseProgress:p,dx,dy,t:s.phase==='result'?1:s.phase==='mirror'?eased:0,settings:state.settings,direct:a.direct,chunk:s.chunk||1,replay:a.replay};}
+  function renderAnimation(){
+    const a=state.anim;if(!a)return;const scene=currentScene();plane.render(scene);$('step-badge').textContent=`${a.index+1} / ${a.steps.length}`;
+    const total=a.steps.reduce((s,x)=>s+x.duration,0),elapsed=a.steps.slice(0,a.index).reduce((s,x)=>s+x.duration,0)+a.elapsed;$('playback-progress').style.width=`${total?Math.min(100,elapsed/total*100):100}%`;
+    explain(scene);renderCalculation(a.before,a.T,a.after,scene.phase,scene);updateChecklist(scene.phase);
+  }
+  function explain(s){
+    const T=s.T,p=s.before.p||s.before.reps[0]?.p,shape=!!s.before.poly;let title='',description='',tip='';
+    if(s.phase==='start'){title=s.replay?'직전 움직임을 다시 봐요':'이번 출발을 확인해요';description=(shape?M.equation(s.before.poly):'P'+coord(p))+'에서 시작합니다.';tip=s.replay?'다시 보기는 이동을 추가로 적용하지 않아요.':'어느 방향으로 움직일지 먼저 생각해 보세요.';}
+    else if(s.phase==='xdir'){title=`${T.a.num>0?'오른쪽':'왼쪽'}으로 ${M.fmt(T.a.num>0?T.a:T.a.neg())}만큼`;description=`가로 이동량은 ${sign(T.a)}입니다. ${T.a.num>0?'x좌표가 증가하는 양의':'x좌표가 감소하는 음의'} 방향이에요.`;tip='지금 있는 좌표가 음수여도, 오른쪽으로 움직이면 양의 방향이에요.';}
+    else if(s.phase==='ydir'){title=`${T.b.num>0?'위쪽':'아래쪽'}으로 ${M.fmt(T.b.num>0?T.b:T.b.neg())}만큼`;description=`가로 이동은 끝났어요. 이제 세로 이동량 ${sign(T.b)}를 적용합니다.`;tip='가로 이동이 끝난 현재 위치에서 세로 이동을 시작해요.';}
+    else if(s.phase==='xmove'){title='가로 좌표가 바뀌어요';description=`지금까지 가로로 ${sign(M.q(Number(s.dx.toFixed(4))))}만큼 이동했어요. 세로 좌표 ${M.fmt(p[1])}는 그대로예요.`;tip=s.chunk>1?`긴 이동은 ${s.chunk}단위씩 묶어 보여줘요. 마지막 남은 양까지 정확히 이동해요.`:'경로의 +1, +2…는 출발점에서 움직인 양이에요. 좌표 그 자체와 구분해요.';}
+    else if(s.phase==='ymove'){title='이제 세로 좌표가 바뀌어요';description=`지금까지 세로로 ${sign(M.q(Number(s.dy.toFixed(4))))}만큼 이동했어요. 가로 좌표 ${M.fmt(p[0].add(T.a))}는 그대로예요.`;tip=s.chunk>1?`긴 이동은 ${s.chunk}단위씩 묶어 보여줘요.`:'세로 경로의 숫자는 세로 이동을 시작한 위치를 기준으로 해요.';}
+    else if(s.phase==='xzero'){title='가로 이동은 0이에요';description=`가로 이동량이 0이므로 x좌표 ${M.fmt(p[0])}는 바뀌지 않아요.`;tip='0도 중요한 이동량이에요. 이 방향으로는 움직이지 않는다는 뜻이에요.';}
+    else if(s.phase==='yzero'){title='세로 이동은 0이에요';description=`세로 이동량이 0이므로 y좌표 ${M.fmt(p[1])}는 바뀌지 않아요.`;tip='한 방향만 움직여도 평행이동이에요. 둘 다 0이면 같은 위치가 됩니다.';}
+    else if(s.phase==='direct'){title='가로와 세로를 동시에';description=`가로 ${sign(T.a)}, 세로 ${sign(T.b)}를 동시에 적용해요. 꺾인 안내선은 두 이동량을 비교하기 위한 표시예요.`;tip='직선 경로와 가로 → 세로 경로의 도착점은 같아요.';}
+    else if(s.phase==='axis'){title=T.kind==='axis'?'굵은 점선이 대칭축이에요':'대칭 중심을 찾아요';description=T.kind==='axis'?`${T.label}을 기준으로 반대편의 점을 찾을 거예요. 먼저 대칭축이 어디인지 살펴보세요.`:`${T.label}이 두 대응점의 중점이 될 거예요. 점 대칭에는 대칭축이 없습니다.`;tip=T.kind==='axis'?'대칭축은 잠시 강조된 뒤 같은 위치에 남아 있어요.':'기준은 직선이 아니라 점 하나예요.';}
+    else if(s.phase==='guide'){title=T.kind==='axis'?'축까지의 거리를 재어요':'중심까지의 거리를 확인해요';const dist=T.kind==='axis'?G.distanceLabel(T,p):G.distanceCenter(T,p);description=T.kind==='axis'?`대표 위치에서 축에 수직인 선을 그어요. 축까지의 거리는 ${dist}입니다.`:`출발 위치에서 중심까지의 거리는 ${dist}입니다. 반대편에서도 이 거리가 같아야 해요.`;tip=T.kind==='axis'?'기울어진 축도 똑같아요. 가로나 세로가 아니라 축에 수직으로 재요.':'두 점을 연결한 선분의 중점에 대칭 중심이 있어요.';}
+    else if(s.phase==='mirror'){title='반대편에 같은 거리만큼';description=shape?'대표점이 반대편의 대응 위치를 찾아가요. 도형 전체를 찌그러뜨리는 과정이 아니라, 대응점을 설명하는 장면이에요.':'기준의 반대편에서 같은 거리인 점을 찾아가요. 점의 이동은 대응 위치를 설명하기 위한 과정이에요.';tip=T.kind==='axis'?'대칭축 위에 있는 점은 제자리에 있어요.':'대칭 중심 자체는 대칭이동해도 제자리예요.';}
+    else if(s.phase==='result'){title='이동을 완성했어요';description=resultDescription(s.before,s.after,T);tip=mode().translation?'현재 도착한 위치가 다음 이동의 출발점이 됩니다.':'같은 대칭을 한 번 더 하면 원래 위치로 돌아가요.';}
+    $('stage-title').textContent=title;$('stage-description').textContent=description;$('coach-tip').textContent=tip;
+  }
+  function resultDescription(before,after,T){
+    if(before.p&&before.p.every((v,i)=>v.eq(after.p[i])))return T.kind==='translation'?'두 이동량이 모두 0이므로 위치가 같습니다.':T.kind==='axis'?'이 점은 대칭축 위에 있어요. 대칭이동해도 같은 위치입니다.':'이 점은 대칭 중심이므로 위치가 그대로입니다.';
+    if(before.poly&&M.equivalent(before.poly,after.poly))return T.kind==='translation'?'이동 전후 도형이 겹칩니다. 대표점의 대응을 확인해 보세요.':'이 도형은 선택한 기준에 대해 대칭이라 두 모습이 겹쳐요. 각각의 대표점은 어디로 대응되는지 확인하세요.';
+    if(before.p)return T.kind==='translation'?`가로 ${sign(T.a)}, 세로 ${sign(T.b)}를 더해서 P′${coord(after.p)}에 도착했어요.`:`${T.label}을 기준으로 대응하는 점은 P′${coord(after.p)}입니다.`;
+    const c=M.circleData(after.poly);return c?`원의 중심은 ${coord([c.h,c.k])}입니다. 반지름과 도형의 크기는 변하지 않았어요.`:'도형을 이루는 점들이 같은 변환을 따릅니다. 결과 방정식과 대표점을 함께 확인해 보세요.';
+  }
+  function complete(){
+    const a=state.anim;if(!a)return;stopAnimation();a.index=a.steps.length-1;a.elapsed=0;
+    const f=family();if(!a.replay){f.current=a.after;const entry={before:a.before,after:a.after,T:a.T,direct:a.direct,mode:state.mode,time:new Date().toISOString()};f.history.push(entry);f.last=entry;}
+    state.completed={before:a.before,after:a.after,T:a.T,replay:a.replay,direct:a.direct};renderAnimation();state.anim=null;syncSource();updateHistory();
+    const result=a.after.p?'P′'+coord(a.after.p):M.equation(a.after.poly);$('result-value').textContent=result;$('result-value').classList.add('ready');$('result-description').textContent=resultDescription(a.before,a.after,a.T);$('result-icon').textContent='✓';
+    $('result-card').classList.remove('just-finished');void $('result-card').offsetWidth;if(!state.settings.reduced)$('result-card').classList.add('just-finished');$('playback-progress').style.width='100%';updateControls();
+    $('coordinate-plane').setAttribute('aria-label',`이동 완료. ${result}. ${resultDescription(a.before,a.after,a.T)}`);
+  }
+  function frame(now){
+    const a=state.anim;if(!a||!a.playing)return;if(!a.previous)a.previous=now;const delta=Math.min(120,now-a.previous);a.previous=now;
+    const step=a.steps[a.index],speed=step.phase==='axis'?1:Number($('speed').value);a.elapsed+=delta*speed;
+    if(a.elapsed>=step.duration){a.elapsed=0;a.index++;if(a.index>=a.steps.length-1){complete();return;}}
+    renderAnimation();raf=requestAnimationFrame(frame);
+  }
+  function play(){if(state.sourceDirty){showError('source-error','새 출발 위치를 먼저 적용해 주세요.');return;}let a=state.anim||prepare();if(!a)return;if(state.settings.reduced){nextStep();return;}if(a.elapsed>=a.steps[a.index].duration){a.elapsed=0;a.index++;if(a.index>=a.steps.length-1){complete();return;}}a.playing=true;a.previous=0;updateControls();raf=requestAnimationFrame(frame);}
+  function pause(){if(!state.anim)return;if(state.anim.playing){stopAnimation();updateControls();}else play();}
+  function nextStep(){let a=state.anim||prepare();if(!a)return;stopAnimation();const s=a.steps[a.index];if(a.elapsed>=s.duration){a.index++;if(a.index>=a.steps.length-1){complete();return;}}a.elapsed=a.steps[a.index].duration;renderAnimation();updateControls();}
+  function replay(){const a=prepare(true);if(!a)return;toast('직전 움직임만 다시 재생합니다. 이동이 추가로 적용되지는 않아요.');if(state.settings.reduced)nextStep();else play();}
+  function undo(){const f=family();if(state.anim){cancelPreview();syncSource();ready();toast('진행 중인 이동을 취소하고 출발 상태로 돌아왔어요.');return;}if(!f.history.length)return;const e=f.history.pop();f.current=e.before;f.last=f.history.at(-1)||null;state.completed=null;syncSource();plane.fit([f.current]);updateHistory();ready();toast('직전 이동 한 번을 취소했어요.');}
+  function reset(){cancelPreview();const f=family();f.current=f.initial;f.history=[];f.last=null;syncSource();clearErrors();plane.fit([f.current]);updateHistory();ready();toast('이 실험의 처음 위치로 돌아왔어요.');}
+  function changeMode(key){if(!MODES[key])return;cancelPreview();state.mode=key;state.placing=false;plane.placing=false;$('placement-banner').hidden=true;$('coordinate-plane').classList.remove('placing');$('place-point').setAttribute('aria-pressed','false');clearErrors();
+    for(const btn of document.querySelectorAll('[data-mode]')){const active=btn.dataset.mode===key;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));}
+    const md=mode();$('point-inputs').hidden=md.shape;$('shape-inputs').hidden=!md.shape;$('source-title').textContent=md.shape?'어떤 도형을 움직일까요?':'어디에서 출발할까요?';$('transform-title').textContent=md.translation?'얼마나 움직일까요?':'대칭 기준은 무엇일까요?';$('translation-inputs').hidden=!md.translation;$('reflection-inputs').hidden=md.translation;$('axis-legend').hidden=md.translation;$('board-title').textContent=md.board;
+    $('path-explanation').innerHTML=md.translation?'<span>알아두기</span> 가로 → 세로 경로는 좌표 변화를 나누어 보여주는 방법이에요. 동시에 움직여도 도착점은 같아요.':'<span>알아두기</span> 점의 중간 움직임은 대응점을 찾는 안내예요. 대칭이동은 중간 도형의 변형이 아니라 최종 대응 관계를 뜻해요.';
+    syncSource();updateDirections();updateAxisUI();updateHistory();plane.fit([family().current]);
+    if(state.learning==='challenge')loadChallenge(0);else{state.challenge=null;ready();}
+  }
+  const EXAMPLES={
+    'point-translation':[
+      {p:[-2,3],a:3,b:-2},{p:[-4,1],a:2,b:0},{p:[0,0],a:'5/2',b:'-1/2'},{p:[3,-2],a:-5,b:4}
+    ],
+    'point-reflection':[
+      {p:[2,3],axis:'vertical',h:1},{p:[2,3],axis:'general',line:'x+y-1=0'},{p:[2,0],axis:'xaxis'},{p:[-3,2],axis:'origin'}
+    ],
+    'shape-translation':[
+      {eq:'(x-1)^2+(y-2)^2=4',a:3,b:-1},{eq:'y=2x+1',a:3,b:-2},{eq:'y=x^2',a:2,b:1},{eq:'x=2',a:-4,b:2}
+    ],
+    'shape-reflection':[
+      {eq:'(x-2)^2+(y-1)^2=4',axis:'yaxis'},{eq:'y=x^2',axis:'diagonal'},{eq:'x^2+y^2=4',axis:'yaxis'},{eq:'y=2x+1',axis:'general',line:'x+y-1=0'}
+    ]
+  };
+  function applyExample(ex){state.updating=true;if(ex.a!==undefined)$('move-x').value=ex.a;if(ex.b!==undefined)$('move-y').value=ex.b;if(ex.axis)$('axis-select').value=ex.axis;if(ex.h!==undefined)$('axis-h').value=ex.h;if(ex.k!==undefined)$('axis-k').value=ex.k;if(ex.line)$('axis-equation').value=ex.line;$('path-mode').value='step';state.updating=false;updateDirections();updateAxisUI();setSource(ex.eq?makeShape(ex.eq):makePoint(...ex.p),true);}
+  function exampleNext(){if(state.learning==='challenge'){loadChallenge((state.challenge?.index??-1)+1);return;}state.exampleIndex=(state.exampleIndex+1)%EXAMPLES[state.mode].length;applyExample(EXAMPLES[state.mode][state.exampleIndex]);toast('새 예제를 불러왔어요. 이동 전에 도착 위치를 예상해 보세요.');}
+  const REASONS={
+    'point-translation':{options:['가로·세로 이동량을 각각 x, y좌표에 더한다.','이동량의 부호를 무조건 양수로 바꾼다.','x좌표와 y좌표를 서로 바꾼다.'],correct:0,hints:['오른쪽·위쪽은 +, 왼쪽·아래쪽은 −예요.','가로 이동은 x좌표, 세로 이동은 y좌표만 바꾸어요.','새 점은 (원래 x+a, 원래 y+b)예요.']},
+    'point-reflection':{options:['대칭축 또는 중심의 반대편, 같은 거리에 놓는다.','모든 경우에 x, y 부호를 둘 다 바꾼다.','대칭축 쪽으로 한 칸만 이동한다.'],correct:0,hints:['먼저 대칭 기준이 직선인지 점인지 살펴보세요.','축 대칭에서는 축에 수직으로, 같은 거리를 확인해요.','y축은 x의 부호, x축은 y의 부호가 바뀌어요. 원점에서는 둘 다 바뀌어요.']},
+    'shape-translation':{options:['원래 식에 x−a와 y−b를 동시에 대입한다.','원래 식의 상수만 전부 더한다.','원의 반지름에도 이동량을 더한다.'],correct:0,hints:['중심이나 꼭짓점이 어디로 이동하는지 먼저 생각해 보세요.','도형을 이루는 점은 (x+a, y+b)로 이동해요.','새 좌표에서 이동량을 빼면 옛 좌표예요. 원래 식에 x−a, y−b를 넣어요.']},
+    'shape-reflection':{options:['점의 대응 관계를 원래 식의 변수에 동시에 대입한다.','식의 모든 부호를 무조건 뒤집는다.','반지름과 길이를 음수로 바꾼다.'],correct:0,hints:['도형의 대표점부터 대칭시켜 보세요.','대칭이동해도 길이와 반지름은 바뀌지 않아요.','y=x 대칭에서는 x와 y를 동시에 바꾸어요. y축은 x→−x, x축은 y→−y예요.']}
+  };
+  function setLearning(learning){cancelPreview();state.learning=learning;document.querySelectorAll('[data-learning]').forEach(btn=>{const active=btn.dataset.learning===learning;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});$('learning-description').textContent=learning==='guided'?'방향을 살피고, 한 칸씩 움직여 보세요.':learning==='free'?'원하는 점과 도형으로 마음껏 실험해 보세요.':'결과와 이유를 예상하고, 움직여 확인해 보세요.';$('challenge-card').hidden=learning!=='challenge';if(learning==='challenge')loadChallenge(0);else{state.challenge=null;ready();}}
+  function loadChallenge(index){const bank=EXAMPLES[state.mode],i=((index%bank.length)+bank.length)%bank.length;state.challenge={id:`${state.mode}:${i}`,index:i,hints:0,solved:false};applyExample(bank[i]);const T=getTransform();state.challenge.expected=transformed(family().current,T);state.challenge.start=family().current;state.challenge.T=T;
+    $('challenge-card').hidden=false;$('prediction-point').hidden=mode().shape;$('prediction-shape').hidden=!mode().shape;$('challenge-title').textContent=mode().shape?'이동 후 방정식은?':'이동 후 좌표는?';for(const id of ['predict-x','predict-y','predict-equation'])$(id).value='';
+    // Rotate options by problem index so the correct reason is not always first.
+    const base=REASONS[state.mode],options=base.options.map((s,j)=>({s,id:j}));const rotate=i%options.length;const ordered=options.slice(rotate).concat(options.slice(0,rotate));$('predict-reason').innerHTML='<option value="">이유를 선택하세요</option>'+ordered.map(o=>`<option value="${o.id}">${esc(o.s)}</option>`).join('');$('prediction-feedback').textContent='답을 예상한 뒤 [예상 확인]을 눌러요. 틀려도 힌트를 보고 다시 도전할 수 있어요.';updateControls();}
+  function checkPrediction(){const task=state.challenge;if(!task)return;try{
+      const correct=mode().shape?M.equivalent(M.parseEquation($('predict-equation').value),task.expected.poly):[M.parseNumber($('predict-x').value,1000000),M.parseNumber($('predict-y').value,1000000)].every((v,i)=>v.eq(task.expected.p[i]));const reason=$('predict-reason').value;
+      if(!correct){$('prediction-feedback').textContent='결과를 다시 살펴볼까요? '+REASONS[state.mode].hints[Math.min(task.hints,2)];return;}
+      if(reason===''){$('prediction-feedback').textContent='예상한 결과가 맞아요! 이제 그렇게 생각한 이유도 선택해 보세요.';return;}
+      if(+reason!==REASONS[state.mode].correct){$('prediction-feedback').textContent='결과는 맞았어요. 이유를 다시 확인해 볼까요? '+REASONS[state.mode].hints[1];return;}
+      task.solved=true;const previous=Array.isArray(state.badges[state.mode])?state.badges[state.mode]:[];if(!previous.includes(task.id))previous.push(task.id);state.badges[state.mode]=previous;save();updateBadges();$('prediction-feedback').textContent='✓ 결과와 이유를 정확하게 연결했어요! 이동을 실행해 내 예상을 눈으로 확인해 보세요.';toast('잘했어요! 결과와 이유를 모두 맞혔어요.');
+    }catch(e){$('prediction-feedback').textContent=e.message;}}
+  function updateBadges(){let total=0;$('progress-list').innerHTML=Object.entries(MODES).map(([key,md])=>{const count=Array.isArray(state.badges[key])?state.badges[key].length:0,earned=count>=2;if(earned)total++;return `<div class="progress-item ${earned?'earned':''}"><div>${earned?'✧':'○'}</div><b>${md.name}</b><span>서로 다른 문제 ${count}개 성공${earned?' · 배지 획득':' · 2개면 배지'}</span></div>`;}).join('');$('badge-count').textContent=`나의 배지 ${total}/4`;}
+  function updateHistory(){const h=family().history;$('history-count').textContent=h.length;$('history-list').innerHTML=h.length?h.slice(-20).map((e,i)=>{const from=e.before.p?coord(e.before.p):M.equation(e.before.poly),to=e.after.p?coord(e.after.p):M.equation(e.after.poly);return `<article class="history-item"><b>${h.length-Math.min(20,h.length)+i+1}. ${esc(e.T.label)}</b><div>${esc(from)} → ${esc(to)}</div></article>`;}).reverse().join(''):'<p class="empty-note">이동을 마치면 이곳에 기록이 쌓여요.</p>';$('export-history').disabled=!h.length;updateCurrent();}
+  function download(name,text,type='text/plain;charset=utf-8'){const blob=text instanceof Blob?text:new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+  function exportHistory(){const h=family().history,lines=['점과 도형의 이동 실험실 · 나의 실험 기록',`저장 시각: ${new Date().toLocaleString('ko-KR')}`,`현재 메뉴: ${mode().name}`,''];for(let i=0;i<h.length;i++){const e=h[i];lines.push(`${i+1}. ${MODES[e.mode].name} | ${e.T.label}`,`   출발: ${e.before.p?coord(e.before.p):M.equation(e.before.poly)}`,`   결과: ${e.after.p?coord(e.after.p):M.equation(e.after.poly)}`,'');}download('이동실험실_나의기록.txt','\uFEFF'+lines.join('\n'));toast('이동 기록을 파일로 저장했어요.');}
+  async function copy(text){try{await navigator.clipboard.writeText(text);toast('복사했어요.');return true;}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch{}ta.remove();toast(ok?'복사했어요.':'자동 복사를 사용할 수 없어요. 내용을 선택해 복사해 주세요.');return ok;}}
+  async function saveImage(){try{const svg=$('coordinate-plane').cloneNode(true),width=plane.W,height=plane.H;svg.setAttribute('width',width);svg.setAttribute('height',height);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');const style=document.createElementNS('http://www.w3.org/2000/svg','style');style.textContent='.tick{font-size:10px;fill:#7a8997;paint-order:stroke;stroke:#fcfcf9;stroke-width:3px}.axis-title{font-size:12px;fill:#6f8597;font-weight:700}text{font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}.finish-pulse,.axis-pulse{animation:none}';svg.prepend(style);const blob=new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url;});const canvas=document.createElement('canvas');canvas.width=Math.round(width*2);canvas.height=Math.round((height+70)*2);const ctx=canvas.getContext('2d');ctx.scale(2,2);ctx.fillStyle='#fcfcf9';ctx.fillRect(0,0,width,height+70);ctx.drawImage(img,0,0,width,height);ctx.fillStyle='#20394d';ctx.font='bold 13px sans-serif';ctx.fillText(`이동 실험실 · ${mode().name}`,18,height+26);ctx.font='11px sans-serif';const txt=state.completed?(state.completed.after.p?'P′'+coord(state.completed.after.p):M.equation(state.completed.after.poly)):'현재 출발 위치';ctx.fillText(txt,18,height+49,width-36);URL.revokeObjectURL(url);const png=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!png)throw new Error('이미지 변환 실패');download('이동실험실_좌표판.png',png);toast('좌표판 이미지를 저장했어요.');}catch{toast('이 브라우저에서 이미지 저장이 제한되어 있어요. 기기의 화면 캡처를 사용해 주세요.');}}
+  function shareExample(){if(!/^https?:$/.test(location.protocol)||location.href==='about:srcdoc'){toast('배포한 웹페이지에서 예제 링크를 만들 수 있어요. 로컬 파일에서는 좌표판·기록을 저장해 주세요.');return;}try{const cur=family().current,payload={mode:state.mode,point:cur.p?.map(String),equation:cur.poly?M.equation(cur.poly,false):undefined,a:$('move-x').value,b:$('move-y').value,axis:$('axis-select').value,h:$('axis-h').value,k:$('axis-k').value,line:$('axis-equation').value};const u=new URL(location.href);u.search='';u.hash='';u.searchParams.set('experiment',JSON.stringify(payload));$('share-link').value=u.toString();$('share-dialog').showModal();}catch{toast('입력한 조건을 확인해 주세요.');}}
+  function readShared(){try{const raw=new URL(location.href).searchParams.get('experiment');if(!raw)return;if(raw.length>1800)throw new Error('공유한 조건이 너무 길어요.');const data=JSON.parse(raw);if(!MODES[data.mode])throw new Error('알 수 없는 실험 메뉴예요.');changeMode(data.mode);const ex=mode().shape?{eq:String(data.equation)}:{p:data.point?.map(v=>M.parseNumber(String(v)))};if(!ex.eq&&(!ex.p||ex.p.length!==2))throw new Error('공유 좌표가 올바르지 않아요.');Object.assign(ex,{a:data.a,b:data.b,axis:data.axis,h:data.h,k:data.k,line:data.line});applyExample(ex);getTransform();toast('공유된 예제의 출발 위치와 이동 조건을 불러왔어요.');}catch(e){toast('공유 예제를 불러오지 못했어요. 기본 예제로 시작합니다.');changeMode('point-translation');applyExample(EXAMPLES['point-translation'][0]);}}
+  // UI event wiring. Changed inputs cancel an unfinished preview; completed state stays immutable.
+  $('apply-point').addEventListener('click',applySource);$('apply-shape').addEventListener('click',applySource);
+  ['point-x','point-y','shape-equation'].forEach(id=>$(id).addEventListener('input',onSourceInput));
+  ['point-x','point-y','shape-equation'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applySource();}}));
+  ['move-x','move-y','axis-h','axis-k','axis-equation'].forEach(id=>$(id).addEventListener('input',onTransformInput));
+  ['axis-select','path-mode'].forEach(id=>$(id).addEventListener('change',onTransformInput));
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>changeMode(b.dataset.mode)));
+  document.querySelectorAll('[data-learning]').forEach(b=>b.addEventListener('click',()=>setLearning(b.dataset.learning)));
+  document.querySelectorAll('[data-nudge]').forEach(b=>b.addEventListener('click',()=>{const [id,delta]=b.dataset.nudge.split(':');try{$(id).value=M.parseNumber($(id).value).add(delta).toString();onTransformInput();}catch(e){showError('transform-error',e);}}));
+  document.querySelectorAll('[data-direction]').forEach(b=>b.addEventListener('click',()=>{const [axis,dir]=b.dataset.direction.split(':');try{const current=M.parseNumber($(`move-${axis}`).value),v=current.num<0?current.neg():current;$(`move-${axis}`).value=(+dir<0?v.neg():v).toString();onTransformInput();}catch(e){showError('transform-error',e);}}));
+  document.querySelectorAll('[data-axis]').forEach(b=>b.addEventListener('click',()=>{$('axis-select').value=b.dataset.axis;onTransformInput();}));
+  document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{const presets={circle:'(x-1)^2+(y-2)^2=4',line:'y=2x+1',parabola:'y=x^2',vertical:'x=2'};$('shape-equation').value=presets[b.dataset.preset];applySource();}));
+  $('place-point').addEventListener('click',()=>{state.placing=!state.placing;plane.placing=state.placing;$('place-point').setAttribute('aria-pressed',String(state.placing));$('placement-banner').hidden=!state.placing;$('coordinate-plane').classList.toggle('placing',state.placing);});
+  $('run').addEventListener('click',play);$('pause').addEventListener('click',pause);$('step').addEventListener('click',nextStep);$('replay').addEventListener('click',replay);$('undo').addEventListener('click',undo);$('reset').addEventListener('click',reset);
+  $('zoom-in').addEventListener('click',()=>plane.zoom(1.2));$('zoom-out').addEventListener('click',()=>plane.zoom(1/1.2));$('fit-view').addEventListener('click',()=>{const a=state.anim||state.completed;plane.fit(a?[a.before,a.after]:[family().current],a?.T||null);});
+  const settingMap={'show-original':'original','show-trail':'trail','show-reps':'reps','chess-pattern':'chess','reduce-motion':'reduced'};
+  Object.entries(settingMap).forEach(([id,key])=>$(id).addEventListener('change',()=>{state.settings[key]=$(id).checked;settingsToUI();save();if(state.anim){if(key==='reduced'&&state.settings.reduced)stopAnimation();renderAnimation();updateControls();}else if(state.completed){const a=state.completed;plane.render({before:a.before,after:a.after,T:a.T,phase:'result',dx:a.T.a?.num||0,dy:a.T.b?.num||0,t:1,settings:state.settings,direct:a.direct});}else ready();plane.drawGrid();}));
+  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change',e=>{if(e.matches){state.settings.reduced=true;settingsToUI();if(state.anim)stopAnimation();updateControls();}});
+  $('load-example').addEventListener('click',exampleNext);$('next-challenge').addEventListener('click',()=>loadChallenge((state.challenge?.index??-1)+1));$('check-prediction').addEventListener('click',checkPrediction);$('show-hint').addEventListener('click',()=>{if(!state.challenge)return;const i=Math.min(state.challenge.hints++,2);$('prediction-feedback').textContent=`힌트 ${i+1}/3 · `+REASONS[state.mode].hints[i];});
+  $('help-open').addEventListener('click',()=>{$('help-dialog').showModal();if(state.anim?.playing)pause();});$('progress-open').addEventListener('click',()=>{updateBadges();$('progress-dialog').showModal();if(state.anim?.playing)pause();});
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
+  document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
+  $('clear-progress').addEventListener('click',()=>{if(confirm('이 기기에 저장된 배지 기록을 초기화할까요?')){state.badges={};save();updateBadges();toast('배지 기록을 초기화했어요.');}});
+  $('export-history').addEventListener('click',exportHistory);$('save-image').addEventListener('click',saveImage);$('share-example').addEventListener('click',shareExample);$('copy-link').addEventListener('click',()=>copy($('share-link').value));$('copy-result').addEventListener('click',()=>copy($('result-value').textContent));
+  document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT','BUTTON','SUMMARY'].includes(document.activeElement?.tagName)||document.querySelector('dialog[open]'))return;if(e.code==='Space'){e.preventDefault();if(state.anim)pause();else play();}if(e.code==='ArrowRight'){e.preventDefault();nextStep();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.anim?.playing){stopAnimation();updateControls();}});
+  // Read-only diagnostics for reproducible tests and future integrations.
+  window.MoveLab={version:'1.0.0',getSnapshot:()=>{const f=family();return {mode:state.mode,learning:state.learning,point:f.current.p?.map(String),equation:f.current.poly?M.equation(f.current.poly,false):null,history:f.history.length,phase:state.anim?.steps[state.anim.index].phase||(state.completed?'result':'ready'),playing:!!state.anim?.playing,sourceDirty:state.sourceDirty,completed:!!state.completed};}};
+  settingsToUI();updateBadges();updateDirections();updateAxisUI();syncSource();ready();readShared();
+  if(window.innerWidth<=640)$('input-panel').open=false;
+})();
+</script>
+</body>
+</html>

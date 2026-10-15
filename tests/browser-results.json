@@ -1,0 +1,242 @@
+{
+  "status": "passed",
+  "checks": 59,
+  "results": [
+    {
+      "test": "initial source and four menus",
+      "status": "passed"
+    },
+    {
+      "test": "default chess square is 1 coordinate unit",
+      "status": "passed"
+    },
+    {
+      "test": "point translation signed displacement",
+      "status": "passed"
+    },
+    {
+      "test": "trajectory numbers and final coordinate on plane",
+      "status": "passed"
+    },
+    {
+      "test": "replay does not add another transformation",
+      "status": "passed"
+    },
+    {
+      "test": "next transformation starts from current position",
+      "status": "passed"
+    },
+    {
+      "test": "undo restores exact previous state",
+      "status": "passed"
+    },
+    {
+      "test": "reset restores initial experiment",
+      "status": "passed"
+    },
+    {
+      "test": "positive direction from negative coordinates",
+      "status": "passed"
+    },
+    {
+      "test": "fractional final coordinates remain exact",
+      "status": "passed"
+    },
+    {
+      "test": "zero movement keeps position",
+      "status": "passed"
+    },
+    {
+      "test": "unapplied source blocks execution",
+      "status": "passed"
+    },
+    {
+      "test": "exact fractional addition",
+      "status": "passed"
+    },
+    {
+      "test": "simultaneous path yields same displacement",
+      "status": "passed"
+    },
+    {
+      "test": "reflection in x=1",
+      "status": "passed"
+    },
+    {
+      "test": "both equal distances labeled",
+      "status": "passed"
+    },
+    {
+      "test": "general oblique mirror exact result",
+      "status": "passed"
+    },
+    {
+      "test": "reflection involution restores point",
+      "status": "passed"
+    },
+    {
+      "test": "point on axis remains fixed",
+      "status": "passed"
+    },
+    {
+      "test": "central reflection has no fake axis",
+      "status": "passed"
+    },
+    {
+      "test": "arbitrary center",
+      "status": "passed"
+    },
+    {
+      "test": "curved mirror rejected",
+      "status": "passed"
+    },
+    {
+      "test": "circle translated by exact substitution",
+      "status": "passed"
+    },
+    {
+      "test": "circle SVG keeps equal radii",
+      "status": "passed"
+    },
+    {
+      "test": "line translation canonical result",
+      "status": "passed"
+    },
+    {
+      "test": "vertical line supported",
+      "status": "passed"
+    },
+    {
+      "test": "circle reflection",
+      "status": "passed"
+    },
+    {
+      "test": "sideways parabola keeps both branches",
+      "status": "passed"
+    },
+    {
+      "test": "reflection selects a moving representative instead of a fixed vertex",
+      "status": "passed"
+    },
+    {
+      "test": "coincident reflected figure explained",
+      "status": "passed"
+    },
+    {
+      "test": "invalid or unsupported equation rejected: x^2+y^2=-1",
+      "status": "passed"
+    },
+    {
+      "test": "invalid or unsupported equation rejected: y=1/x",
+      "status": "passed"
+    },
+    {
+      "test": "invalid or unsupported equation rejected: y=sin(x)",
+      "status": "passed"
+    },
+    {
+      "test": "invalid or unsupported equation rejected: y=x^3",
+      "status": "passed"
+    },
+    {
+      "test": "invalid or unsupported equation rejected: 1=0",
+      "status": "passed"
+    },
+    {
+      "test": "invalid or unsupported equation rejected: 0=0",
+      "status": "passed"
+    },
+    {
+      "test": "general conic renders after reflection: x^2+2xy+3y^2=4",
+      "status": "passed"
+    },
+    {
+      "test": "general conic renders after reflection: xy=1",
+      "status": "passed"
+    },
+    {
+      "test": "general conic renders after reflection: x^2-y^2=0",
+      "status": "passed"
+    },
+    {
+      "test": "general conic renders after reflection: (x+y)^2=1",
+      "status": "passed"
+    },
+    {
+      "test": "general conic renders after reflection: (x-1)^2+(y-2)^2=0",
+      "status": "passed"
+    },
+    {
+      "test": "challenge locks assigned problem fields",
+      "status": "passed"
+    },
+    {
+      "test": "prediction with reason accepted",
+      "status": "passed"
+    },
+    {
+      "test": "two distinct problems earn badge",
+      "status": "passed"
+    },
+    {
+      "test": "free experimentation unlocks input",
+      "status": "passed"
+    },
+    {
+      "test": "coordinate help dialog",
+      "status": "passed"
+    },
+    {
+      "test": "time-based animation running and inputs locked",
+      "status": "passed"
+    },
+    {
+      "test": "pause stops frames without committing",
+      "status": "passed"
+    },
+    {
+      "test": "real animation commits exactly once",
+      "status": "passed"
+    },
+    {
+      "test": "editing a paused preview cancels it safely",
+      "status": "passed"
+    },
+    {
+      "test": "tablet-landscape: no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "test": "tablet-landscape: touch-sized controls operate",
+      "status": "passed"
+    },
+    {
+      "test": "tablet-portrait: no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "test": "tablet-portrait: touch-sized controls operate",
+      "status": "passed"
+    },
+    {
+      "test": "mobile: no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "test": "mobile: touch-sized controls operate",
+      "status": "passed"
+    },
+    {
+      "test": "mobile: settings initially collapsed",
+      "status": "passed"
+    },
+    {
+      "test": "iframe/srcdoc app initializes and responds",
+      "status": "passed"
+    },
+    {
+      "test": "no uncaught JavaScript errors",
+      "status": "passed"
+    }
+  ]
+}
